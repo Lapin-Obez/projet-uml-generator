@@ -1,7 +1,14 @@
+package src;
+
 import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
 public class svg {
 	int cmp = 0;
 	
@@ -31,4 +38,163 @@ public class svg {
       }
       cmp ++;
    }
+   
+   public static void main(String [] args) throws IOException {
+		/*Creation de l'instance Document qui sera utilisÃ© pour construire le contenu XML
+	      crÃ©ation d'une instance de svggenerator (graphics2D) en utilisant le doc crÃ©Ã© */
+		// RÃ©cupÃ¨re la DOMImplementation
+		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
+
+		// CrÃ©ation d'une instance org.w3c.dom.Document
+		Document document = domImpl.createDocument(null, "svg", null);
+
+		//CrÃ©ation d'une instance de SVG Generator
+		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+
+		/* Dessine sur le composant svggenerator */
+		svg test;
+		test = new svg();
+		svgGenerator.setPaint(Color.white);
+		svgGenerator.fill(new Rectangle(0,0,1000,1000));
+		Classe c = créationClasse1();
+		test.paint(svgGenerator,c);
+		c = créationClasse2();
+		test.paint(svgGenerator,c);
+		c = créationClasse3();
+		test.paint(svgGenerator,c);
+		c = créationClasse4();
+		test.paint(svgGenerator,c);
+		c = créationClasse5();
+		test.paint(svgGenerator,c);
+		c = créationClasse6();
+		test.paint(svgGenerator,c);
+		c = créationClasse7();
+		test.paint(svgGenerator,c);
+		c = créationClasse8();
+		test.paint(svgGenerator,c);
+		c = créationClasse9();
+		test.paint(svgGenerator,c);
+		/* sortir le rÃ©sultat*/
+		svgGenerator.stream("Image_TestSVGGen.svg");
+	}
+   
+   public static Classe créationClasse1() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# Prenom : String");
+		l.add("# Ã‚ge : Integer");
+		l.add("# ddn : Date");
+		l.add("# numEtu : Integer");
+		l.add("# moyenne : float");
+		l2.add("+ getNumEtu() : Integer");
+		l2.add("+ getNomPrenom() : String");
+		l2.add("+ getDDN() : Date()");
+		l2.add("+ getClasse() : Classe()");
+		l2.add("+ toString() : String");
+		return new Classe("Etudiant",l,l2);
+	}
+	
+	public static Classe créationClasse2() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# nbrEleve : Integer");
+		l.add("# numEtu : Integer");
+		l.add("# moyenne : float");
+		l2.add("+ getEtud() : List<Etudiant>");
+		l2.add("+ getProf() : Professeur()");
+		l2.add("+ toString() : String");
+		return new Classe("Classe",l,l2);
+	}
+	
+	public static Classe créationClasse3() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# Prenom : String");
+		l.add("# Ã‚ge : Integer");
+		l.add("# ddn : Date");
+		l.add("# numProf : Integer");
+		l.add("# nbrEleve : Integer");
+		l2.add("+ getNumProf() : Integer");
+		l2.add("+ getNomPrenom() : String");
+		l2.add("+ getDDN() : Date()");
+		l2.add("+ getnbrEleve : Integer");
+		l2.add("+ toString() : String");
+		return new Classe("Proffesseur",l,l2);
+	}
+	
+	public static Classe créationClasse4() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# nbrEleve : String");
+		l2.add("+ getnbrEleve() : Integer");
+		l2.add("+ getNom() : String");
+		l2.add("+ toString() : String");
+		return new Classe("MatiÃ¨re",l,l2);
+	}
+	
+	public static Classe créationClasse5() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Num : Integer");
+		l.add("# tabClasse : Classe[]()");
+		l2.add("+ getNum() : Integer");
+		l2.add("+ toString() : String");
+		return new Classe("Groupe",l,l2);
+	}
+	
+	public static Classe créationClasse6() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# Prenom : String");
+		l2.add("+ getNumEtu() : Integer");
+		l2.add("+ getClasse() : Class()");
+		l2.add("+ toString() : String");
+		return new Classe("EmployÃ©",l,l2);
+	}
+	
+	public static Classe créationClasse7() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# Prenom : String");
+		l.add("# Ã‚ge : Integer");
+		l.add("# numEtu : Integer");
+		l2.add("+ getNumEtu() : Integer");
+		l2.add("+ getDDN() : Date()");
+		l2.add("+ toString() : String");
+		return new Classe("EmployÃ©",l,l2);
+	}
+	
+	public static Classe créationClasse8() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# ddn : Date");
+		l.add("# numEtu : Integer");
+		l2.add("+ getNumEtu() : Integer");
+		l2.add("+ getNomPrenom() : String");
+		l2.add("+ getClasse() : Class()");
+		l2.add("+ toString() : String");
+		return new Classe("EmployÃ©",l,l2);
+	}
+	
+	public static Classe créationClasse9() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Nom : String");
+		l.add("# Prenom : String");
+		l.add("# ddn : Date");
+		l.add("# numEtu : Integer");
+		l.add("# Moyenne : float");
+		l2.add("+ getNumEtu() : Integer");
+		l2.add("+ toString() : String");
+		return new Classe("EmployÃ©",l,l2);
+	}
+	
+
 } 

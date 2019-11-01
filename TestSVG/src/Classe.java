@@ -1,3 +1,6 @@
+package src;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Classe {
@@ -29,5 +32,4 @@ public class Classe {
 	public void setMethode(List<String> methode) {
 		this.methode = methode;
 	}
-
 }
