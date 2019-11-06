@@ -1,0 +1,8 @@
+Classe 'Class'
+    Annotations : variable contenue dans les @
+    Field : variables publiques
+    Constructor : les differents constructeur ranger dans l'ordre d'abord ceux avec des parametres puis celui sans parametres
+    getClasses() : renvoie les classes créer dans la classe 
+    Méthodes : 
+                - getMethods(): toutes les methodes publiques même celles caché ( wait() )
+                -getDeclaredMethods(): toutes les methodes déclarés dans la classe et classes mère 
