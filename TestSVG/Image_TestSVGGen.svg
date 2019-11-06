@@ -7,248 +7,248 @@
   ><g fill="white" stroke="white"
     ><rect x="0" width="1000" height="1000" y="0" stroke="none"
       /><rect fill="none" x="10" width="200" height="40" y="10" stroke="black"
-      /><text fill="black" x="90" xml:space="preserve" y="35" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="10" width="200" height="100" y="50" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="70" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="85" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="100" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="115" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="30" xml:space="preserve" y="130" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="145" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="10" width="200" height="80" y="150" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="165" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="180" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="195" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="30" xml:space="preserve" y="210" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="30" xml:space="preserve" y="225" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="85" xml:space="preserve" y="35" stroke="none"
+      >Employé0</text
+      ><rect fill="none" x="10" width="200" height="112" y="50" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="67" stroke="none"
+      ># Nom : String0</text
+      ><text fill="black" x="30" xml:space="preserve" y="84" stroke="none"
+      ># Prenom : String0</text
+      ><text fill="black" x="30" xml:space="preserve" y="101" stroke="none"
+      ># Âge : Integer0</text
+      ><text fill="black" x="30" xml:space="preserve" y="118" stroke="none"
+      ># ddn : Date0</text
+      ><text fill="black" x="30" xml:space="preserve" y="135" stroke="none"
+      ># numEtu : Integer0</text
+      ><text fill="black" x="30" xml:space="preserve" y="152" stroke="none"
+      ># Moyenne : float0</text
+      ><rect fill="none" x="10" width="200" height="95" y="162" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="179" stroke="none"
+      >+ getNumEtu() : Integer0</text
+      ><text fill="black" x="30" xml:space="preserve" y="196" stroke="none"
+      >+ getNomPrenom() : String0</text
+      ><text fill="black" x="30" xml:space="preserve" y="213" stroke="none"
+      >+ getDDN() : Date()0</text
+      ><text fill="black" x="30" xml:space="preserve" y="230" stroke="none"
+      >+ getClasse() : Class()0</text
+      ><text fill="black" x="30" xml:space="preserve" y="247" stroke="none"
+      >+ toString() : String0</text
       ><rect fill="none" x="310" width="200" height="40" y="10" stroke="black"
-      /><text fill="black" x="390" xml:space="preserve" y="35" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="310" width="200" height="100" y="50" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="70" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="85" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="100" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="115" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="330" xml:space="preserve" y="130" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="145" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="310" width="200" height="80" y="150" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="165" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="180" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="195" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="330" xml:space="preserve" y="210" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="330" xml:space="preserve" y="225" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="385" xml:space="preserve" y="35" stroke="none"
+      >Employé1</text
+      ><rect fill="none" x="310" width="200" height="112" y="50" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="67" stroke="none"
+      ># Nom : String1</text
+      ><text fill="black" x="330" xml:space="preserve" y="84" stroke="none"
+      ># Prenom : String1</text
+      ><text fill="black" x="330" xml:space="preserve" y="101" stroke="none"
+      ># Âge : Integer1</text
+      ><text fill="black" x="330" xml:space="preserve" y="118" stroke="none"
+      ># ddn : Date1</text
+      ><text fill="black" x="330" xml:space="preserve" y="135" stroke="none"
+      ># numEtu : Integer1</text
+      ><text fill="black" x="330" xml:space="preserve" y="152" stroke="none"
+      ># Moyenne : float1</text
+      ><rect fill="none" x="310" width="200" height="95" y="162" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="179" stroke="none"
+      >+ getNumEtu() : Integer1</text
+      ><text fill="black" x="330" xml:space="preserve" y="196" stroke="none"
+      >+ getNomPrenom() : String1</text
+      ><text fill="black" x="330" xml:space="preserve" y="213" stroke="none"
+      >+ getDDN() : Date()1</text
+      ><text fill="black" x="330" xml:space="preserve" y="230" stroke="none"
+      >+ getClasse() : Class()1</text
+      ><text fill="black" x="330" xml:space="preserve" y="247" stroke="none"
+      >+ toString() : String1</text
       ><rect fill="none" x="610" width="200" height="40" y="10" stroke="black"
-      /><text fill="black" x="690" xml:space="preserve" y="35" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="610" width="200" height="100" y="50" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="70" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="85" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="100" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="115" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="630" xml:space="preserve" y="130" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="145" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="610" width="200" height="80" y="150" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="165" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="180" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="195" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="630" xml:space="preserve" y="210" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="630" xml:space="preserve" y="225" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="685" xml:space="preserve" y="35" stroke="none"
+      >Employé2</text
+      ><rect fill="none" x="610" width="200" height="112" y="50" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="67" stroke="none"
+      ># Nom : String2</text
+      ><text fill="black" x="630" xml:space="preserve" y="84" stroke="none"
+      ># Prenom : String2</text
+      ><text fill="black" x="630" xml:space="preserve" y="101" stroke="none"
+      ># Âge : Integer2</text
+      ><text fill="black" x="630" xml:space="preserve" y="118" stroke="none"
+      ># ddn : Date2</text
+      ><text fill="black" x="630" xml:space="preserve" y="135" stroke="none"
+      ># numEtu : Integer2</text
+      ><text fill="black" x="630" xml:space="preserve" y="152" stroke="none"
+      ># Moyenne : float2</text
+      ><rect fill="none" x="610" width="200" height="95" y="162" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="179" stroke="none"
+      >+ getNumEtu() : Integer2</text
+      ><text fill="black" x="630" xml:space="preserve" y="196" stroke="none"
+      >+ getNomPrenom() : String2</text
+      ><text fill="black" x="630" xml:space="preserve" y="213" stroke="none"
+      >+ getDDN() : Date()2</text
+      ><text fill="black" x="630" xml:space="preserve" y="230" stroke="none"
+      >+ getClasse() : Class()2</text
+      ><text fill="black" x="630" xml:space="preserve" y="247" stroke="none"
+      >+ toString() : String2</text
       ><rect fill="none" x="10" width="200" height="40" y="310" stroke="black"
-      /><text fill="black" x="90" xml:space="preserve" y="335" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="10" width="200" height="100" y="350" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="370" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="385" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="400" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="415" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="30" xml:space="preserve" y="430" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="445" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="10" width="200" height="80" y="450" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="465" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="480" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="495" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="30" xml:space="preserve" y="510" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="30" xml:space="preserve" y="525" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="85" xml:space="preserve" y="335" stroke="none"
+      >Employé3</text
+      ><rect fill="none" x="10" width="200" height="112" y="350" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="367" stroke="none"
+      ># Nom : String3</text
+      ><text fill="black" x="30" xml:space="preserve" y="384" stroke="none"
+      ># Prenom : String3</text
+      ><text fill="black" x="30" xml:space="preserve" y="401" stroke="none"
+      ># Âge : Integer3</text
+      ><text fill="black" x="30" xml:space="preserve" y="418" stroke="none"
+      ># ddn : Date3</text
+      ><text fill="black" x="30" xml:space="preserve" y="435" stroke="none"
+      ># numEtu : Integer3</text
+      ><text fill="black" x="30" xml:space="preserve" y="452" stroke="none"
+      ># Moyenne : float3</text
+      ><rect fill="none" x="10" width="200" height="95" y="462" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="479" stroke="none"
+      >+ getNumEtu() : Integer3</text
+      ><text fill="black" x="30" xml:space="preserve" y="496" stroke="none"
+      >+ getNomPrenom() : String3</text
+      ><text fill="black" x="30" xml:space="preserve" y="513" stroke="none"
+      >+ getDDN() : Date()3</text
+      ><text fill="black" x="30" xml:space="preserve" y="530" stroke="none"
+      >+ getClasse() : Class()3</text
+      ><text fill="black" x="30" xml:space="preserve" y="547" stroke="none"
+      >+ toString() : String3</text
       ><rect fill="none" x="310" width="200" height="40" y="310" stroke="black"
-      /><text fill="black" x="390" xml:space="preserve" y="335" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="310" width="200" height="100" y="350" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="370" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="385" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="400" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="415" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="330" xml:space="preserve" y="430" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="445" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="310" width="200" height="80" y="450" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="465" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="480" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="495" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="330" xml:space="preserve" y="510" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="330" xml:space="preserve" y="525" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="385" xml:space="preserve" y="335" stroke="none"
+      >Employé4</text
+      ><rect fill="none" x="310" width="200" height="112" y="350" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="367" stroke="none"
+      ># Nom : String4</text
+      ><text fill="black" x="330" xml:space="preserve" y="384" stroke="none"
+      ># Prenom : String4</text
+      ><text fill="black" x="330" xml:space="preserve" y="401" stroke="none"
+      ># Âge : Integer4</text
+      ><text fill="black" x="330" xml:space="preserve" y="418" stroke="none"
+      ># ddn : Date4</text
+      ><text fill="black" x="330" xml:space="preserve" y="435" stroke="none"
+      ># numEtu : Integer4</text
+      ><text fill="black" x="330" xml:space="preserve" y="452" stroke="none"
+      ># Moyenne : float4</text
+      ><rect fill="none" x="310" width="200" height="95" y="462" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="479" stroke="none"
+      >+ getNumEtu() : Integer4</text
+      ><text fill="black" x="330" xml:space="preserve" y="496" stroke="none"
+      >+ getNomPrenom() : String4</text
+      ><text fill="black" x="330" xml:space="preserve" y="513" stroke="none"
+      >+ getDDN() : Date()4</text
+      ><text fill="black" x="330" xml:space="preserve" y="530" stroke="none"
+      >+ getClasse() : Class()4</text
+      ><text fill="black" x="330" xml:space="preserve" y="547" stroke="none"
+      >+ toString() : String4</text
       ><rect fill="none" x="610" width="200" height="40" y="310" stroke="black"
-      /><text fill="black" x="690" xml:space="preserve" y="335" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="610" width="200" height="100" y="350" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="370" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="385" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="400" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="415" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="630" xml:space="preserve" y="430" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="445" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="610" width="200" height="80" y="450" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="465" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="480" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="495" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="630" xml:space="preserve" y="510" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="630" xml:space="preserve" y="525" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="685" xml:space="preserve" y="335" stroke="none"
+      >Employé5</text
+      ><rect fill="none" x="610" width="200" height="112" y="350" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="367" stroke="none"
+      ># Nom : String5</text
+      ><text fill="black" x="630" xml:space="preserve" y="384" stroke="none"
+      ># Prenom : String5</text
+      ><text fill="black" x="630" xml:space="preserve" y="401" stroke="none"
+      ># Âge : Integer5</text
+      ><text fill="black" x="630" xml:space="preserve" y="418" stroke="none"
+      ># ddn : Date5</text
+      ><text fill="black" x="630" xml:space="preserve" y="435" stroke="none"
+      ># numEtu : Integer5</text
+      ><text fill="black" x="630" xml:space="preserve" y="452" stroke="none"
+      ># Moyenne : float5</text
+      ><rect fill="none" x="610" width="200" height="95" y="462" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="479" stroke="none"
+      >+ getNumEtu() : Integer5</text
+      ><text fill="black" x="630" xml:space="preserve" y="496" stroke="none"
+      >+ getNomPrenom() : String5</text
+      ><text fill="black" x="630" xml:space="preserve" y="513" stroke="none"
+      >+ getDDN() : Date()5</text
+      ><text fill="black" x="630" xml:space="preserve" y="530" stroke="none"
+      >+ getClasse() : Class()5</text
+      ><text fill="black" x="630" xml:space="preserve" y="547" stroke="none"
+      >+ toString() : String5</text
       ><rect fill="none" x="10" width="200" height="40" y="610" stroke="black"
-      /><text fill="black" x="90" xml:space="preserve" y="635" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="10" width="200" height="100" y="650" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="670" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="685" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="700" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="715" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="30" xml:space="preserve" y="730" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="745" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="10" width="200" height="80" y="750" stroke="black"
-      /><text fill="black" x="30" xml:space="preserve" y="765" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="30" xml:space="preserve" y="780" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="30" xml:space="preserve" y="795" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="30" xml:space="preserve" y="810" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="30" xml:space="preserve" y="825" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="85" xml:space="preserve" y="635" stroke="none"
+      >Employé6</text
+      ><rect fill="none" x="10" width="200" height="112" y="650" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="667" stroke="none"
+      ># Nom : String6</text
+      ><text fill="black" x="30" xml:space="preserve" y="684" stroke="none"
+      ># Prenom : String6</text
+      ><text fill="black" x="30" xml:space="preserve" y="701" stroke="none"
+      ># Âge : Integer6</text
+      ><text fill="black" x="30" xml:space="preserve" y="718" stroke="none"
+      ># ddn : Date6</text
+      ><text fill="black" x="30" xml:space="preserve" y="735" stroke="none"
+      ># numEtu : Integer6</text
+      ><text fill="black" x="30" xml:space="preserve" y="752" stroke="none"
+      ># Moyenne : float6</text
+      ><rect fill="none" x="10" width="200" height="95" y="762" stroke="black"
+      /><text fill="black" x="30" xml:space="preserve" y="779" stroke="none"
+      >+ getNumEtu() : Integer6</text
+      ><text fill="black" x="30" xml:space="preserve" y="796" stroke="none"
+      >+ getNomPrenom() : String6</text
+      ><text fill="black" x="30" xml:space="preserve" y="813" stroke="none"
+      >+ getDDN() : Date()6</text
+      ><text fill="black" x="30" xml:space="preserve" y="830" stroke="none"
+      >+ getClasse() : Class()6</text
+      ><text fill="black" x="30" xml:space="preserve" y="847" stroke="none"
+      >+ toString() : String6</text
       ><rect fill="none" x="310" width="200" height="40" y="610" stroke="black"
-      /><text fill="black" x="390" xml:space="preserve" y="635" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="310" width="200" height="100" y="650" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="670" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="685" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="700" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="715" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="330" xml:space="preserve" y="730" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="745" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="310" width="200" height="80" y="750" stroke="black"
-      /><text fill="black" x="330" xml:space="preserve" y="765" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="330" xml:space="preserve" y="780" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="330" xml:space="preserve" y="795" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="330" xml:space="preserve" y="810" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="330" xml:space="preserve" y="825" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="385" xml:space="preserve" y="635" stroke="none"
+      >Employé7</text
+      ><rect fill="none" x="310" width="200" height="112" y="650" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="667" stroke="none"
+      ># Nom : String7</text
+      ><text fill="black" x="330" xml:space="preserve" y="684" stroke="none"
+      ># Prenom : String7</text
+      ><text fill="black" x="330" xml:space="preserve" y="701" stroke="none"
+      ># Âge : Integer7</text
+      ><text fill="black" x="330" xml:space="preserve" y="718" stroke="none"
+      ># ddn : Date7</text
+      ><text fill="black" x="330" xml:space="preserve" y="735" stroke="none"
+      ># numEtu : Integer7</text
+      ><text fill="black" x="330" xml:space="preserve" y="752" stroke="none"
+      ># Moyenne : float7</text
+      ><rect fill="none" x="310" width="200" height="95" y="762" stroke="black"
+      /><text fill="black" x="330" xml:space="preserve" y="779" stroke="none"
+      >+ getNumEtu() : Integer7</text
+      ><text fill="black" x="330" xml:space="preserve" y="796" stroke="none"
+      >+ getNomPrenom() : String7</text
+      ><text fill="black" x="330" xml:space="preserve" y="813" stroke="none"
+      >+ getDDN() : Date()7</text
+      ><text fill="black" x="330" xml:space="preserve" y="830" stroke="none"
+      >+ getClasse() : Class()7</text
+      ><text fill="black" x="330" xml:space="preserve" y="847" stroke="none"
+      >+ toString() : String7</text
       ><rect fill="none" x="610" width="200" height="40" y="610" stroke="black"
-      /><text fill="black" x="690" xml:space="preserve" y="635" stroke="none"
-      >Eleve</text
-      ><rect fill="none" x="610" width="200" height="100" y="650" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="670" stroke="none"
-      ># Nom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="685" stroke="none"
-      ># Prenom : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="700" stroke="none"
-      ># Âge : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="715" stroke="none"
-      ># ddn : Date</text
-      ><text fill="black" x="630" xml:space="preserve" y="730" stroke="none"
-      ># numEtu : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="745" stroke="none"
-      ># Moyenne : float</text
-      ><rect fill="none" x="610" width="200" height="80" y="750" stroke="black"
-      /><text fill="black" x="630" xml:space="preserve" y="765" stroke="none"
-      >+ getNumEtu() : Integer</text
-      ><text fill="black" x="630" xml:space="preserve" y="780" stroke="none"
-      >+ getNomPrenom() : String</text
-      ><text fill="black" x="630" xml:space="preserve" y="795" stroke="none"
-      >+ getDDN() : Date()</text
-      ><text fill="black" x="630" xml:space="preserve" y="810" stroke="none"
-      >+ getClasse() : Class()</text
-      ><text fill="black" x="630" xml:space="preserve" y="825" stroke="none"
-      >+ toString() : String</text
+      /><text fill="black" x="685" xml:space="preserve" y="635" stroke="none"
+      >Employé8</text
+      ><rect fill="none" x="610" width="200" height="112" y="650" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="667" stroke="none"
+      ># Nom : String8</text
+      ><text fill="black" x="630" xml:space="preserve" y="684" stroke="none"
+      ># Prenom : String8</text
+      ><text fill="black" x="630" xml:space="preserve" y="701" stroke="none"
+      ># Âge : Integer8</text
+      ><text fill="black" x="630" xml:space="preserve" y="718" stroke="none"
+      ># ddn : Date8</text
+      ><text fill="black" x="630" xml:space="preserve" y="735" stroke="none"
+      ># numEtu : Integer8</text
+      ><text fill="black" x="630" xml:space="preserve" y="752" stroke="none"
+      ># Moyenne : float8</text
+      ><rect fill="none" x="610" width="200" height="95" y="762" stroke="black"
+      /><text fill="black" x="630" xml:space="preserve" y="779" stroke="none"
+      >+ getNumEtu() : Integer8</text
+      ><text fill="black" x="630" xml:space="preserve" y="796" stroke="none"
+      >+ getNomPrenom() : String8</text
+      ><text fill="black" x="630" xml:space="preserve" y="813" stroke="none"
+      >+ getDDN() : Date()8</text
+      ><text fill="black" x="630" xml:space="preserve" y="830" stroke="none"
+      >+ getClasse() : Class()8</text
+      ><text fill="black" x="630" xml:space="preserve" y="847" stroke="none"
+      >+ toString() : String8</text
     ></g
   ></g
 ></svg
