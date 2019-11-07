@@ -36,7 +36,7 @@ public class svg {
     	  svgGenerator.drawString(s+cmp, 30+x, pos+y);
           pos+=17;//+17 car size()*17
       }
-      cmp ++;
+      cmp += 2;
    }
    
    public static void main(String [] args) throws IOException {
@@ -65,14 +65,6 @@ public class svg {
 		c = créationClasse4();
 		test.paint(svgGenerator,c);
 		c = créationClasse5();
-		test.paint(svgGenerator,c);
-		c = créationClasse6();
-		test.paint(svgGenerator,c);
-		c = créationClasse7();
-		test.paint(svgGenerator,c);
-		c = créationClasse8();
-		test.paint(svgGenerator,c);
-		c = créationClasse9();
 		test.paint(svgGenerator,c);
 		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
@@ -122,7 +114,7 @@ public class svg {
 		l2.add("+ getDDN() : Date()");
 		l2.add("+ getnbrEleve : Integer");
 		l2.add("+ toString() : String");
-		return new Classe("Proffesseur",l,l2);
+		return new Classe("Professeur",l,l2);
 	}
 	
 	public static Classe créationClasse4() {
@@ -145,56 +137,5 @@ public class svg {
 		l2.add("+ toString() : String");
 		return new Classe("Groupe",l,l2);
 	}
-	
-	public static Classe créationClasse6() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Nom : String");
-		l.add("# Prenom : String");
-		l2.add("+ getNumEtu() : Integer");
-		l2.add("+ getClasse() : Class()");
-		l2.add("+ toString() : String");
-		return new Classe("Employé",l,l2);
-	}
-	
-	public static Classe créationClasse7() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Nom : String");
-		l.add("# Prenom : String");
-		l.add("# Âge : Integer");
-		l.add("# numEtu : Integer");
-		l2.add("+ getNumEtu() : Integer");
-		l2.add("+ getDDN() : Date()");
-		l2.add("+ toString() : String");
-		return new Classe("Employé",l,l2);
-	}
-	
-	public static Classe créationClasse8() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Nom : String");
-		l.add("# ddn : Date");
-		l.add("# numEtu : Integer");
-		l2.add("+ getNumEtu() : Integer");
-		l2.add("+ getNomPrenom() : String");
-		l2.add("+ getClasse() : Class()");
-		l2.add("+ toString() : String");
-		return new Classe("Employé",l,l2);
-	}
-	
-	public static Classe créationClasse9() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Nom : String");
-		l.add("# Prenom : String");
-		l.add("# ddn : Date");
-		l.add("# numEtu : Integer");
-		l.add("# Moyenne : float");
-		l2.add("+ getNumEtu() : Integer");
-		l2.add("+ toString() : String");
-		return new Classe("Employé",l,l2);
-	}
-	
 
 } 
