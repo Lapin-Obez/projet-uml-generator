@@ -90,7 +90,7 @@ public class svg {
 		svg test;
 		test = new svg();
 		svgGenerator.setPaint(Color.white);
-		svgGenerator.fill(new Rectangle(0,0,1000,1000));
+//		svgGenerator.fill(new Rectangle(0,0,500,500));
 		Classe c1 = créationClasse1();
 		test.paintClasse(svgGenerator,c1);
 		Classe c2 = créationClasse2();
