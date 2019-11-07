@@ -7,6 +7,7 @@ public class Classe {
 	private List<String> attribut;
 	private List<String> methode;
 	private List<Classe> liaison;
+	private String paquage;
 	
 	public Classe(String name, List<String> attribut, List<String> methode, List<Classe> liaison, String paquage) {
 		super();
@@ -16,7 +17,6 @@ public class Classe {
 		this.liaison = liaison;
 		this.paquage = paquage;
 	}
-	private String paquage;
 	
 	public Classe(String name, List<String> attribut, List<String> methode) {
 		super();
@@ -53,5 +53,16 @@ public class Classe {
 	}
 	public void setLiaison(List<Classe> liaison) {
 		this.liaison = liaison;
+	}
+	public String toString() {
+		String res =  "Nom " + name ;
+		if(paquage != null) {
+			res = res +" package " + paquage; 
+		}
+		res = res+ " Attribut " + attribut.toString() + " Méthode " + methode.toString();
+		if(liaison != null) {
+			res= res + liaison.toString();
+		}
+		return res;
 	}
 }
