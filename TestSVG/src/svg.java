@@ -12,31 +12,38 @@ import org.w3c.dom.Document;
 public class svg {
 	int cmp = 0;
 	
-   public void paint(SVGGraphics2D svgGenerator, Classe classe) {
+   public void paintClasse(SVGGraphics2D svgGenerator, Classe classe) {
       svgGenerator.setPaint(Color.BLACK);
       List<String> att = classe.getAttribut();
       List<String> meth = classe.getMethode();
       int y = cmp / 3 *300;
       int x = (cmp%3)*300;
       int pos = 0;
-      svgGenerator.drawRect(10+x, 10+y, 200, 40);
-      svgGenerator.drawString(classe.getName()+cmp, 85+x, 35+y);
+      svgGenerator.drawRect(30+x, 40+y, 200, 40);
+      svgGenerator.drawString(classe.getName()+cmp, 105+x, 65+y);
       pos = 67;
       int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
-      svgGenerator.drawRect(10+x, 50+y, 200, yrectatt);
+      svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
       for(String s : att) {
-    	  svgGenerator.drawString(s+cmp, 30+x, pos+y);
+    	  svgGenerator.drawString(s+cmp, 50+x, pos+y+30);
     	  pos+=17;//+17 car size()*17
     	  //System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
       }     
       int yrectmeth = meth.size()*17+10;
-      svgGenerator.drawRect(10+x, 50+y+yrectatt, 200, yrectmeth);
+      svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
       pos = pos+10;
       for(String s : meth) {
-    	  svgGenerator.drawString(s+cmp, 30+x, pos+y);
+    	  svgGenerator.drawString(s+cmp, 50+x, pos+y+30);
           pos+=17;//+17 car size()*17
       }
       cmp += 2;
+   }
+   
+   public void paintPackage(SVGGraphics2D svgGenerator, List<Classe> classe) {
+	   svgGenerator.setPaint(Color.BLACK);
+	   svgGenerator.drawRect(5,5,classe.size()*180,classe.size()*180);//On modifié 
+	   svgGenerator.drawString(classe.get(0).getPaquage(), 9, 18);
+	   svgGenerator.drawRect(5,5,classe.get(0).getPaquage().length()*8, 18);
    }
    
    public static void main(String [] args) throws IOException {
@@ -56,16 +63,28 @@ public class svg {
 		test = new svg();
 		svgGenerator.setPaint(Color.white);
 		svgGenerator.fill(new Rectangle(0,0,1000,1000));
-		Classe c = créationClasse1();
-		test.paint(svgGenerator,c);
-		c = créationClasse2();
-		test.paint(svgGenerator,c);
-		c = créationClasse3();
-		test.paint(svgGenerator,c);
-		c = créationClasse4();
-		test.paint(svgGenerator,c);
-		c = créationClasse5();
-		test.paint(svgGenerator,c);
+		Classe c1 = créationClasse1();
+		test.paintClasse(svgGenerator,c1);
+		Classe c2 = créationClasse2();
+		test.paintClasse(svgGenerator,c2);
+		Classe c3 = créationClasse3();
+		test.paintClasse(svgGenerator,c3);
+		Classe c4 = créationClasse4();
+		test.paintClasse(svgGenerator,c4);
+		Classe c5 = créationClasse5();
+		test.paintClasse(svgGenerator,c5);
+		List<Classe> tab = new ArrayList<>();
+		c1.setPaquage("IUTTTTTTTTTTTTTTTTTTT");
+		c2.setPaquage("IUTTTTTTTTTTTTTTTTTTT");
+		c3.setPaquage("IUTTTTTTTTTTTTTTTTTTT");
+		c4.setPaquage("IUTTTTTTTTTTTTTTTTTTT");
+		c5.setPaquage("IUTTTTTTTTTTTTTTTTTTT");
+		tab.add(c5);
+		tab.add(c4);
+		tab.add(c3);
+		tab.add(c2);
+		tab.add(c1);
+		test.paintPackage(svgGenerator,tab);
 		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
 	}
