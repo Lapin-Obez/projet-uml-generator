@@ -22,7 +22,7 @@ public class svg {
       svgGenerator.drawRect(10+x, 10+y, 200, 40);
       svgGenerator.drawString(classe.getName()+cmp, 85+x, 35+y);
       pos = 67;
-      int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter dÃ©calage
+      int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
       svgGenerator.drawRect(10+x, 50+y, 200, yrectatt);
       for(String s : att) {
     	  svgGenerator.drawString(s+cmp, 30+x, pos+y);
@@ -40,15 +40,15 @@ public class svg {
    }
    
    public static void main(String [] args) throws IOException {
-		/*Creation de l'instance Document qui sera utilisÃ© pour construire le contenu XML
-	      crÃ©ation d'une instance de svggenerator (graphics2D) en utilisant le doc crÃ©Ã© */
-		// RÃ©cupÃ¨re la DOMImplementation
+		/*Creation de l'instance Document qui sera utilisé pour construire le contenu XML
+	      création d'une instance de svggenerator (graphics2D) en utilisant le doc créé */
+		// Récupère la DOMImplementation
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
-		// CrÃ©ation d'une instance org.w3c.dom.Document
+		// Création d'une instance org.w3c.dom.Document
 		Document document = domImpl.createDocument(null, "svg", null);
 
-		//CrÃ©ation d'une instance de SVG Generator
+		//Création d'une instance de SVG Generator
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
 		/* Dessine sur le composant svggenerator */
@@ -74,7 +74,7 @@ public class svg {
 		test.paint(svgGenerator,c);
 		c = créationClasse9();
 		test.paint(svgGenerator,c);
-		/* sortir le rÃ©sultat*/
+		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
 	}
    
@@ -83,7 +83,7 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# Ã‚ge : Integer");
+		l.add("# Âge : Integer");
 		l.add("# ddn : Date");
 		l.add("# numEtu : Integer");
 		l.add("# moyenne : float");
@@ -113,7 +113,7 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# Ã‚ge : Integer");
+		l.add("# Âge : Integer");
 		l.add("# ddn : Date");
 		l.add("# numProf : Integer");
 		l.add("# nbrEleve : Integer");
@@ -133,7 +133,7 @@ public class svg {
 		l2.add("+ getnbrEleve() : Integer");
 		l2.add("+ getNom() : String");
 		l2.add("+ toString() : String");
-		return new Classe("MatiÃ¨re",l,l2);
+		return new Classe("Matière",l,l2);
 	}
 	
 	public static Classe créationClasse5() {
@@ -154,7 +154,7 @@ public class svg {
 		l2.add("+ getNumEtu() : Integer");
 		l2.add("+ getClasse() : Class()");
 		l2.add("+ toString() : String");
-		return new Classe("EmployÃ©",l,l2);
+		return new Classe("Employé",l,l2);
 	}
 	
 	public static Classe créationClasse7() {
@@ -162,12 +162,12 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# Ã‚ge : Integer");
+		l.add("# Âge : Integer");
 		l.add("# numEtu : Integer");
 		l2.add("+ getNumEtu() : Integer");
 		l2.add("+ getDDN() : Date()");
 		l2.add("+ toString() : String");
-		return new Classe("EmployÃ©",l,l2);
+		return new Classe("Employé",l,l2);
 	}
 	
 	public static Classe créationClasse8() {
@@ -180,7 +180,7 @@ public class svg {
 		l2.add("+ getNomPrenom() : String");
 		l2.add("+ getClasse() : Class()");
 		l2.add("+ toString() : String");
-		return new Classe("EmployÃ©",l,l2);
+		return new Classe("Employé",l,l2);
 	}
 	
 	public static Classe créationClasse9() {
@@ -193,7 +193,7 @@ public class svg {
 		l.add("# Moyenne : float");
 		l2.add("+ getNumEtu() : Integer");
 		l2.add("+ toString() : String");
-		return new Classe("EmployÃ©",l,l2);
+		return new Classe("Employé",l,l2);
 	}
 	
 
