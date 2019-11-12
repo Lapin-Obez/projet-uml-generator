@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/hcorentin/Documents/IUT/cour/Projet/batik-all-1.12.jar"/>
+	<classpathentry kind="lib" path="/home/e183294h/Réseau/Perso/Documents/S3/Projet/batik-1.12/lib/batik-all-1.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
