@@ -14,7 +14,7 @@
       ><text x="50" xml:space="preserve" y="114" stroke="none"
       ># Prenom : String0</text
       ><text x="50" xml:space="preserve" y="131" stroke="none"
-      ># Âge : Integer0</text
+      ># ége : Integer0</text
       ><text x="50" xml:space="preserve" y="148" stroke="none"
       ># ddn : Date0</text
       ><text x="50" xml:space="preserve" y="165" stroke="none"
@@ -60,7 +60,7 @@
       ><text x="650" xml:space="preserve" y="114" stroke="none"
       ># Prenom : String2</text
       ><text x="650" xml:space="preserve" y="131" stroke="none"
-      ># Âge : Integer2</text
+      ># ége : Integer2</text
       ><text x="650" xml:space="preserve" y="148" stroke="none"
       ># ddn : Date2</text
       ><text x="650" xml:space="preserve" y="165" stroke="none"
@@ -80,7 +80,7 @@
       >+ toString() : String2</text
       ><rect fill="none" x="30" width="200" height="40" y="340"
       /><text x="105" xml:space="preserve" y="365" stroke="none"
-      >Matière3</text
+      >Matiére3</text
       ><rect fill="none" x="30" width="200" height="44" y="380"
       /><text x="50" xml:space="preserve" y="397" stroke="none"
       ># Nom : String3</text

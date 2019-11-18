@@ -9,6 +9,8 @@ import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+
+
 public class svg {
 	int cmp = 0;
 
@@ -81,7 +83,7 @@ public class svg {
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
 		// Création d'une instance org.w3c.dom.Document
-		Document document = domImpl.createDocument(null, "svg", null);
+		Document document = domImpl.createDocument("http://www.w3.org/2000/svg", "svg", null);
 
 		//Création d'une instance de SVG Generator
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
