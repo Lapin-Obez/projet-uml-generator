@@ -22,12 +22,12 @@ public class svg {
 		int x = (cmp%3)*300;
 		int pos = 0;
 		svgGenerator.drawRect(30+x, 40+y, 200, 40);
-		svgGenerator.drawString(classe.getName()+cmp, 105+x, 65+y);
+		svgGenerator.drawString(classe.getName()+" "+cmp, 105+x, 65+y);
 		pos = 67;
 		int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
 		svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
 		for(String s : att) {
-			svgGenerator.drawString(s+cmp, 50+x, pos+y+30);
+			svgGenerator.drawString(s+" "+cmp, 50+x, pos+y+30);
 			pos+=17;//+17 car size()*17
 			//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
 		}     
@@ -35,9 +35,11 @@ public class svg {
 		svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
 		pos = pos+10;
 		for(String s : meth) {
-			svgGenerator.drawString(s+cmp, 50+x, pos+y+30);
+			svgGenerator.drawString(s+" "+cmp, 50+x, pos+y+30);
 			pos+=17;//+17 car size()*17
 		}
+		classe.setX(x+30);
+		classe.setY(y+40);
 		cmp += 1;
 	}
 
@@ -46,6 +48,11 @@ public class svg {
 		svgGenerator.drawRect(5,5,classe.size()*180,classe.size()*110);//A modifié lors changement et création algo UML générale par package
 		svgGenerator.drawString(classe.get(0).getPaquage(), 7, 18);
 		svgGenerator.drawRect(5,5,classe.get(0).getPaquage().length()*8, 18);
+	}
+	
+	public void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
+		svgGenerator.setPaint(Color.BLACK);
+		//svgGenerator.drawLine(x1, y1, x2, y2);
 	}
 
 	public List<Classe>[] triClasse(List<Classe> tab) {//algo pour trier les classe selon leur package dans un tableau de list
@@ -187,6 +194,7 @@ public class svg {
 		l.add("# tabClasse : Classe[]()");
 		l2.add("+ getNum() : Integer");
 		l2.add("+ toString() : String");
+		l2.add("+ setNum() : void");
 		return new Classe("Groupe",l,l2);
 	}
 

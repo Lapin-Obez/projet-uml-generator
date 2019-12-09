@@ -8,6 +8,10 @@ public class Classe {
 	private List<String> methode;
 	private List<Classe> liaison;
 	private String paquage;
+	private int x =0;
+	private int y = 0;
+	private int longu = 0;
+	private int larg = 0;
 	
 	public Classe(String name, List<String> attribut, List<String> methode, List<Classe> liaison, String paquage) {
 		super();
@@ -18,6 +22,38 @@ public class Classe {
 		this.paquage = paquage;
 	}
 	
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getLongu() {
+		return longu;
+	}
+
+	public void setLongu(int longu) {
+		this.longu = longu;
+	}
+
+	public int getLarg() {
+		return larg;
+	}
+
+	public void setLarg(int larg) {
+		this.larg = larg;
+	}
+
 	public Classe(String name, List<String> attribut, List<String> methode) {
 		super();
 		this.name = name;
@@ -59,7 +95,7 @@ public class Classe {
 		if(paquage != null) {
 			res = res +" package " + paquage; 
 		}
-		res = res+ " Attribut " + attribut.toString() + " Méthode " + methode.toString();
+		res = res+ " Attribut " + attribut.toString() + " Mï¿½thode " + methode.toString();
 		if(liaison != null) {
 			res= res + liaison.toString();
 		}
