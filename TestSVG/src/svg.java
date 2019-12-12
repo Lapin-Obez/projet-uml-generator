@@ -13,6 +13,7 @@ import org.w3c.dom.Document;
 
 public class svg {
 	int cmp = 0;
+	private static List<Classe> list = new ArrayList<>();
 
 	public void paintClasse(SVGGraphics2D svgGenerator, Classe classe) {//Création UML de classe
 		svgGenerator.setPaint(Color.BLACK);
@@ -30,7 +31,7 @@ public class svg {
 			svgGenerator.drawString(s+" "+cmp, 50+x, pos+y+30);
 			pos+=17;//+17 car size()*17
 			//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
-		}     
+		}
 		int yrectmeth = meth.size()*17+10;
 		svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
 		pos = pos+10;
@@ -40,6 +41,9 @@ public class svg {
 		}
 		classe.setX(x+30);
 		classe.setY(y+40);
+		classe.setLarg(200+x);
+		classe.setLongu(y+yrectmeth+40+yrectatt);
+//		svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+30, classe.getLongu()+40);test trait diagonale pour tester si coordonnée bonne
 		cmp += 1;
 	}
 
@@ -52,7 +56,13 @@ public class svg {
 	
 	public void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
 		svgGenerator.setPaint(Color.BLACK);
-		//svgGenerator.drawLine(x1, y1, x2, y2);
+		for(Classe c : list) {
+			for(Classe s : classe.getLiaison()) {
+				if(s.equals(c)) {
+					svgGenerator.drawLine((classe.getX()+classe.getLarg()), (classe.getY()+classe.getLongu()) /2, (c.getX()+c.getLarg()), (c.getY()+c.getLongu()) /2);
+				}
+			}
+		}
 	}
 
 	public List<Classe>[] triClasse(List<Classe> tab) {//algo pour trier les classe selon leur package dans un tableau de list
@@ -99,17 +109,30 @@ public class svg {
 		svg test;
 		test = new svg();
 		svgGenerator.setPaint(Color.white);
-//		svgGenerator.fill(new Rectangle(0,0,500,500));
+		
 		Classe c1 = créationClasse1();
-		test.paintClasse(svgGenerator,c1);
 		Classe c2 = créationClasse2();
-		test.paintClasse(svgGenerator,c2);
 		Classe c3 = créationClasse3();
-		test.paintClasse(svgGenerator,c3);
 		Classe c4 = créationClasse4();
-		test.paintClasse(svgGenerator,c4);
 		Classe c5 = créationClasse5();
+		
+		list.add(c1);
+		list.add(c2);
+		list.add(c3);
+		list.add(c4);
+		list.add(c5);
+		List<Classe> liaison = new ArrayList<>();
+		liaison.add(c2);
+		liaison.add(c4);
+		c1.setLiaison(liaison);
+		
+		test.paintClasse(svgGenerator,c1);
+		test.paintClasse(svgGenerator,c2);
+		test.paintClasse(svgGenerator,c3);
+		test.paintClasse(svgGenerator,c4);
 		test.paintClasse(svgGenerator,c5);
+		test.paintLink(svgGenerator, c1);
+		
 		List<Classe> tab = new ArrayList<>();
 		c1.setPaquage("IUT");c2.setPaquage("IUTTTT");c3.setPaquage("IUT");c4.setPaquage("IUTT");c5.setPaquage("IUT");
 		tab.add(c5);tab.add(c4);tab.add(c3);tab.add(c2);tab.add(c1);

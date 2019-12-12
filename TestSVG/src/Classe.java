@@ -1,17 +1,18 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Classe {
 	private String name;
-	private List<String> attribut;
-	private List<String> methode;
-	private List<Classe> liaison;
+	private List<String> attribut = new ArrayList<>();
+	private List<String> methode = new ArrayList<>();
+	private List<Classe> liaison = new ArrayList<>();
 	private String paquage;
 	private int x =0;
 	private int y = 0;
-	private int longu = 0;
 	private int larg = 0;
+	private int longu = 0;
 	
 	public Classe(String name, List<String> attribut, List<String> methode, List<Classe> liaison, String paquage) {
 		super();
@@ -90,6 +91,24 @@ public class Classe {
 	public void setLiaison(List<Classe> liaison) {
 		this.liaison = liaison;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Classe other = (Classe) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
 	public String toString() {
 		String res =  "Nom " + name ;
 		if(paquage != null) {
