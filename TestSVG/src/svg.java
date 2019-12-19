@@ -23,12 +23,12 @@ public class svg {
 		int x = (cmp%3)*300;
 		int pos = 0;
 		svgGenerator.drawRect(30+x, 40+y, 200, 40);
-		svgGenerator.drawString(classe.getName()+" "+cmp, 105+x, 65+y);
+		svgGenerator.drawString(classe.getName(), 105+x, 65+y);
 		pos = 67;
 		int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
 		svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
 		for(String s : att) {
-			svgGenerator.drawString(s+" "+cmp, 50+x, pos+y+30);
+			svgGenerator.drawString(s, 50+x, pos+y+30);
 			pos+=17;//+17 car size()*17
 			//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
 		}
@@ -36,14 +36,14 @@ public class svg {
 		svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
 		pos = pos+10;
 		for(String s : meth) {
-			svgGenerator.drawString(s+" "+cmp, 50+x, pos+y+30);
+			svgGenerator.drawString(s, 50+x, pos+y+30);
 			pos+=17;//+17 car size()*17
 		}
 		classe.setX(x+30);
 		classe.setY(y+40);
-		classe.setLarg(200+x);
-		classe.setLongu(y+yrectmeth+40+yrectatt);
-//		svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+30, classe.getLongu()+40);test trait diagonale pour tester si coordonnée bonne
+		classe.setLarg(200);
+		classe.setLongu(yrectmeth+40+yrectatt);
+//		svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnée bonne
 		cmp += 1;
 	}
 
@@ -59,7 +59,19 @@ public class svg {
 		for(Classe c : list) {
 			for(Classe s : classe.getLiaison()) {
 				if(s.equals(c)) {
-					svgGenerator.drawLine((classe.getX()+classe.getLarg()), (classe.getY()+classe.getLongu()) /2, (c.getX()+c.getLarg()), (c.getY()+c.getLongu()) /2);
+					if(classe.getX() == s.getX() && classe.getY()>s.getY()) {
+						System.out.println(" 1");
+						svgGenerator.drawLine( classe.getX()+classe.getLarg()/2, classe.getY() , s.getX()+s.getLarg()/2 , s.getY()+s.getLongu() );
+					}else if(classe.getX()<s.getX() && classe.getY() == s.getY()) {
+						System.out.println(" 2");
+						svgGenerator.drawLine(classe.getX()+classe.getLarg(),classe.getY()+classe.getLongu()/2 , s.getX(), s.getY()+s.getLongu()/2);
+					}else if(classe.getX() == s.getX() && classe.getY()<s.getY()) {
+						System.out.println(" 3");
+						svgGenerator.drawLine(classe.getX()+classe.getLarg()/2, classe.getY()+classe.getLongu(), s.getX()+s.getLarg()/2, s.getY());
+					}else if(classe.getX()> s.getX() && classe.getY() == s.getY()){
+						System.out.println(" 4");
+						svgGenerator.drawLine(classe.getX(),classe.getY()+classe.getLongu()/2, s.getX()+s.getLarg(), s.getY()+s.getLongu()/2);					
+					}
 				}
 			}
 		}
@@ -122,31 +134,37 @@ public class svg {
 		list.add(c4);
 		list.add(c5);
 		List<Classe> liaison = new ArrayList<>();
-		liaison.add(c2);
-		liaison.add(c4);
-		c1.setLiaison(liaison);
+		liaison.add(c1);
+		liaison.add(c3);
+		liaison.add(c5);
+		c2.setLiaison(liaison);
+		
+		List<Classe> liaison2 = new ArrayList<>();
+		liaison2.add(c1);
+		c4.setLiaison(liaison2);
 		
 		test.paintClasse(svgGenerator,c1);
 		test.paintClasse(svgGenerator,c2);
 		test.paintClasse(svgGenerator,c3);
 		test.paintClasse(svgGenerator,c4);
 		test.paintClasse(svgGenerator,c5);
-		test.paintLink(svgGenerator, c1);
+		test.paintLink(svgGenerator, c2);
+		test.paintLink(svgGenerator, c4);
 		
 		List<Classe> tab = new ArrayList<>();
 		c1.setPaquage("IUT");c2.setPaquage("IUTTTT");c3.setPaquage("IUT");c4.setPaquage("IUTT");c5.setPaquage("IUT");
 		tab.add(c5);tab.add(c4);tab.add(c3);tab.add(c2);tab.add(c1);
 		List[] listF = new ArrayList[tab.size()];
 		listF = test.triClasse(tab);
-		for(List<Classe> l : listF) {
-			if(l != null) {
-				System.out.println(l.getClass() + " : ");
-				for(Classe c : l) {
-					System.out.println(c.toString());
-				}
-				System.out.println(" ///// ");
-			}
-		}
+//		for(List<Classe> l : listF) {
+//			if(l != null) {
+//				System.out.println(l.getClass() + " : ");
+//				for(Classe c : l) {
+//					System.out.println(c.toString());
+//				}
+//				System.out.println(" ///// ");
+//			}
+//		}
 		test.paintPackage(svgGenerator,tab);
 		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
