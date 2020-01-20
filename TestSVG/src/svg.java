@@ -57,7 +57,7 @@ public class svg {
 		}
 		p.setX(5);
 		p.setY(5+Package.cmpP*600);
-		svgGenerator.drawRect( p.getX(), p.getY(), xlen, (p.getClasse().size()/3)*270 );//A modifié lors changement et création algo UML générale par package
+		svgGenerator.drawRect( p.getX(), p.getY(), xlen,(p.getClasse().size()/3)*270 );//A modifié lors changement et création algo UML générale par package
 		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
 		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*8+2, 18);
 		Package.cmpP++;
