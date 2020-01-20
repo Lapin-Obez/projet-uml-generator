@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Package {
+		public static int cmpP = 0;
+		public int cmpC = 0;
 		private String name;
 		private List<Classe> classe;
 		private int x =0;

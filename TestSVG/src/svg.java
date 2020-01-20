@@ -12,10 +12,10 @@ import org.w3c.dom.Document;
 
 
 public class svg {
-	int cmp = 0;
+	static int cmp = 0;
 	private static List<Classe> list = new ArrayList<>();
 
-	public void paintClasse(SVGGraphics2D svgGenerator, Classe classe) {//Création UML de classe
+	public static void paintClasse(SVGGraphics2D svgGenerator, Classe classe) {//Création UML de classe
 		svgGenerator.setPaint(Color.BLACK);
 		List<String> att = classe.getAttribut();
 		List<String> meth = classe.getMethode();
@@ -47,14 +47,23 @@ public class svg {
 		cmp += 1;
 	}
 
-	public void paintPackage(SVGGraphics2D svgGenerator, List<Classe> classe) {//création du package UML
-//		svgGenerator.setPaint(Color.BLACK);
-//		svgGenerator.drawRect(5,5,classe.size()*180,classe.size()*110);//A modifié lors changement et création algo UML générale par package
-//		svgGenerator.drawString(classe.get(0).getPaquage(), 7, 18);
-//		svgGenerator.drawRect(5,5,classe.get(0).getPaquage().length()*8, 18);
+	public static void paintPackage(SVGGraphics2D svgGenerator , Package p) {//création du package UML
+		svgGenerator.setPaint(Color.BLACK);
+		int xlen;
+		if( p.getClasse().size() >= 3) {
+			xlen = 3*300;
+		}else {
+			xlen = p.getClasse().size()*300;
+		}
+		svgGenerator.drawRect( 5, 5+Package.cmpP*100, xlen, p.getClasse().size()/3*400 );//A modifié lors changement et création algo UML générale par package
+		p.setX(5);
+		p.setY(5+Package.cmpP*1000);
+		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
+		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*8, p.getY()+13);
+		Package.cmpP++;
 	}
 	
-	public void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
+	public static void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
 		svgGenerator.setPaint(Color.BLACK);
 		for(Classe c : list) {
 			for(Classe s : classe.getLiaison()) {
@@ -81,7 +90,7 @@ public class svg {
 		}
 	}
 
-	public void triClasse(List<Package> pack) {//algo pour trier les classe selon leur package dans un tableau de list
+	public static void triClasse(List<Package> pack) {//algo pour trier les classe selon leur package dans un tableau de list
 //		List<Classe>[] res = new ArrayList[tab.size()]; ancien modèle de tri
 //		int taille = 0 ;
 //		for(Classe cl : tab) {
@@ -119,10 +128,12 @@ public class svg {
 				}
 				if(!trv) {
 					Package p = new Package(classe.getPaquage());
+					p.addClasse(classe);
 					pack.add(p);
 			}
 			}else {
 				Package p = new Package(classe.getPaquage());
+				p.addClasse(classe);
 				pack.add(p);
 			}
 		}
@@ -134,8 +145,8 @@ public class svg {
 		// Récupére la DOMImplementation
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
-		// Création d'une instance org.w3c.dom.Document
-		Document document = domImpl.createDocument("http://www.w3.org/2000/svg", "svg", null);
+		// Création d'une instance de SVG
+		Document document = domImpl.createDocument("", "svg", null);
 
 		//Création d'une instance de SVG Generator
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
@@ -179,13 +190,13 @@ public class svg {
 		c5.setLiaison(liaison3);
 		
 		List<Package> paqu = new ArrayList<>();
-		test.triClasse(paqu);
+		svg.triClasse(paqu);
 		
 		for (Classe c : list) {
-			test.paintClasse(svgGenerator, c);
+			svg.paintClasse(svgGenerator, c);
 		}
 		for (Classe c : list) {
-			test.paintLink(svgGenerator, c);
+			svg.paintLink(svgGenerator, c);
 		}
 		
 		
@@ -196,9 +207,10 @@ public class svg {
 					System.out.println(c.toString());
 				}
 				System.out.println(" ///// ");
+				svg.paintPackage(svgGenerator, p);
 			}
 		}
-		test.paintPackage(svgGenerator,list);
+		
 		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
 	}
@@ -280,7 +292,7 @@ public class svg {
 		l2.add("+ getNum() : Integer");
 		l2.add("+ toString() : String");
 		l2.add("+ setNum() : void");
-		return new Classe("test",l,l2, "IUT");
+		return new Classe("test",l,l2, "IUTT");
 	}
 
 } 
