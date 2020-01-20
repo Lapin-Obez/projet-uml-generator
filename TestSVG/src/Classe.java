@@ -14,15 +14,23 @@ public class Classe {
 	private int larg = 0;
 	private int longu = 0;
 	
-	public Classe(String name, List<String> attribut, List<String> methode, List<Classe> liaison, String paquage) {
+	public Classe(String name, List<String> attribut, List<String> methode, List<Classe> liaison,String pack ) {
 		super();
 		this.name = name;
 		this.attribut = attribut;
 		this.methode = methode;
 		this.liaison = liaison;
-		this.paquage = paquage;
+		this.paquage = pack;
 	}
 	
+	
+
+	public String getPaquage() {
+		return paquage;
+	}
+	public void setPaquage(String paquage) {
+		this.paquage = paquage;
+	}
 	public int getX() {
 		return x;
 	}
@@ -55,11 +63,12 @@ public class Classe {
 		this.larg = larg;
 	}
 
-	public Classe(String name, List<String> attribut, List<String> methode) {
+	public Classe(String name, List<String> attribut, List<String> methode, String pack) {
 		super();
 		this.name = name;
 		this.attribut = attribut;
 		this.methode = methode;
+		this.paquage = pack;
 	}
 	public String getName() {
 		return name;
@@ -78,12 +87,6 @@ public class Classe {
 	}
 	public void setMethode(List<String> methode) {
 		this.methode = methode;
-	}
-	public String getPaquage() {
-		return paquage;
-	}
-	public void setPaquage(String paquage) {
-		this.paquage = paquage;
 	}
 	public List<Classe> getLiaison() {
 		return liaison;

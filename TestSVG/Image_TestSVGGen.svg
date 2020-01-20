@@ -108,14 +108,59 @@
       >+ toString() : String</text
       ><text x="350" xml:space="preserve" y="475" stroke="none"
       >+ setNum() : void</text
+      ><rect fill="none" x="630" width="200" height="40" y="340"
+      /><text x="705" xml:space="preserve" y="365" stroke="none"
+      >test</text
+      ><rect fill="none" x="630" width="200" height="44" y="380"
+      /><text x="650" xml:space="preserve" y="397" stroke="none"
+      ># Num : Integer</text
+      ><text x="650" xml:space="preserve" y="414" stroke="none"
+      ># tabClasse : Classe[]()</text
+      ><rect fill="none" x="630" width="200" height="61" y="424"
+      /><text x="650" xml:space="preserve" y="441" stroke="none"
+      >+ getNum() : Integer</text
+      ><text x="650" xml:space="preserve" y="458" stroke="none"
+      >+ toString() : String</text
+      ><text x="650" xml:space="preserve" y="475" stroke="none"
+      >+ setNum() : void</text
+      ><rect fill="none" x="30" width="200" height="40" y="640"
+      /><text x="105" xml:space="preserve" y="665" stroke="none"
+      >Etudiant</text
+      ><rect fill="none" x="30" width="200" height="112" y="680"
+      /><text x="50" xml:space="preserve" y="697" stroke="none"
+      ># Nom : String</text
+      ><text x="50" xml:space="preserve" y="714" stroke="none"
+      ># Prenom : String</text
+      ><text x="50" xml:space="preserve" y="731" stroke="none"
+      ># ége : Integer</text
+      ><text x="50" xml:space="preserve" y="748" stroke="none"
+      ># ddn : Date</text
+      ><text x="50" xml:space="preserve" y="765" stroke="none"
+      ># numEtu : Integer</text
+      ><text x="50" xml:space="preserve" y="782" stroke="none"
+      ># moyenne : float</text
+      ><rect fill="none" x="30" width="200" height="95" y="792"
+      /><text x="50" xml:space="preserve" y="809" stroke="none"
+      >+ getNumEtu() : Integer</text
+      ><text x="50" xml:space="preserve" y="826" stroke="none"
+      >+ getNomPrenom() : String</text
+      ><text x="50" xml:space="preserve" y="843" stroke="none"
+      >+ getDDN() : Date()</text
+      ><text x="50" xml:space="preserve" y="860" stroke="none"
+      >+ getClasse() : Classe()</text
+      ><text x="50" xml:space="preserve" y="877" stroke="none"
+      >+ toString() : String</text
       ><line y2="163" fill="none" x1="330" x2="230" y1="129"
       /><line y2="163" fill="none" x1="530" x2="630" y1="129"
+      /><line y2="340" fill="none" x1="330" x2="230" y1="219"
       /><line y2="340" fill="none" x1="430" x2="430" y1="219"
+      /><line y2="340" fill="none" x1="530" x2="630" y1="219"
+      /><line y2="163" fill="none" x1="330" x2="230" y1="129"
       /><line y2="287" fill="none" x1="130" x2="130" y1="340"
-      /><rect fill="none" x="5" width="900" height="550" y="5"
-      /><text x="7" xml:space="preserve" y="18" stroke="none"
-      >IUT</text
-      ><rect fill="none" x="5" width="24" height="18" y="5"
+      /><line y2="287" fill="none" x1="130" x2="130" y1="340"
+      /><line y2="287" fill="none" x1="330" x2="230" y1="340"
+      /><line y2="287" fill="none" x1="530" x2="630" y1="340"
+      /><line y2="287" fill="none" x1="330" x2="230" y1="340"
     /></g
   ></g
 ></svg

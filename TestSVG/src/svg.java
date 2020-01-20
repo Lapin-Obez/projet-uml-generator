@@ -48,10 +48,10 @@ public class svg {
 	}
 
 	public void paintPackage(SVGGraphics2D svgGenerator, List<Classe> classe) {//création du package UML
-		svgGenerator.setPaint(Color.BLACK);
-		svgGenerator.drawRect(5,5,classe.size()*180,classe.size()*110);//A modifié lors changement et création algo UML générale par package
-		svgGenerator.drawString(classe.get(0).getPaquage(), 7, 18);
-		svgGenerator.drawRect(5,5,classe.get(0).getPaquage().length()*8, 18);
+//		svgGenerator.setPaint(Color.BLACK);
+//		svgGenerator.drawRect(5,5,classe.size()*180,classe.size()*110);//A modifié lors changement et création algo UML générale par package
+//		svgGenerator.drawString(classe.get(0).getPaquage(), 7, 18);
+//		svgGenerator.drawRect(5,5,classe.get(0).getPaquage().length()*8, 18);
 	}
 	
 	public void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
@@ -60,49 +60,72 @@ public class svg {
 			for(Classe s : classe.getLiaison()) {
 				if(s.equals(c)) {
 					if(classe.getX() == s.getX() && classe.getY()>s.getY()) {
-						System.out.println(" 1");
 						svgGenerator.drawLine( classe.getX()+classe.getLarg()/2, classe.getY() , s.getX()+s.getLarg()/2 , s.getY()+s.getLongu() );
 					}else if(classe.getX()<s.getX() && classe.getY() == s.getY()) {
-						System.out.println(" 2");
 						svgGenerator.drawLine(classe.getX()+classe.getLarg(),classe.getY()+classe.getLongu()/2 , s.getX(), s.getY()+s.getLongu()/2);
 					}else if(classe.getX() == s.getX() && classe.getY()<s.getY()) {
-						System.out.println(" 3");
 						svgGenerator.drawLine(classe.getX()+classe.getLarg()/2, classe.getY()+classe.getLongu(), s.getX()+s.getLarg()/2, s.getY());
 					}else if(classe.getX()> s.getX() && classe.getY() == s.getY()){
-						System.out.println(" 4");
 						svgGenerator.drawLine(classe.getX(),classe.getY()+classe.getLongu()/2, s.getX()+s.getLarg(), s.getY()+s.getLongu()/2);					
+					}else if(classe.getX() < s.getX() && classe.getY() > s.getY()) {
+						svgGenerator.drawLine( classe.getX()+classe.getLarg(), classe.getY() , s.getX() , s.getY()+s.getLongu() );
+					}else if(classe.getX() < s.getX() && classe.getY() < s.getY()) {
+						svgGenerator.drawLine( classe.getX()+classe.getLarg(), classe.getY()+classe.getLongu() , s.getX(), s.getY());
+					}else if(classe.getX() > s.getX() && classe.getY() < s.getY()) {
+						svgGenerator.drawLine( classe.getX(), classe.getY()+classe.getLongu() , s.getX()+s.getLarg() , s.getY() );
+					}else if(classe.getX() > s.getX() && classe.getY() > s.getY()) {
+						svgGenerator.drawLine( classe.getX(), classe.getY() , s.getX()+s.getLarg() , s.getY()+s.getLongu() );
 					}
 				}
 			}
 		}
 	}
 
-	public List<Classe>[] triClasse(List<Classe> tab) {//algo pour trier les classe selon leur package dans un tableau de list
-		List<Classe>[] res = new ArrayList[tab.size()];
-		int taille = 0 ;
-		for(Classe cl : tab) {
-			if(res[0] != null) {
-				boolean aj = false;
-				for(List<Classe> l : res) {
-					if(l != null) {
-						if(cl.getPaquage().equals((l.get(0)).getPaquage()) ) {
-							l.add(cl);
-							aj = true;
+	public void triClasse(List<Package> pack) {//algo pour trier les classe selon leur package dans un tableau de list
+//		List<Classe>[] res = new ArrayList[tab.size()]; ancien modèle de tri
+//		int taille = 0 ;
+//		for(Classe cl : tab) {
+//			if(res[0] != null) {
+//				boolean aj = false;
+//				for(List<Classe> l : res) {
+//					if(l != null) {
+//						if(cl.getPaquage().equals((l.get(0)).getPaquage()) ) {
+//							l.add(cl);
+//							aj = true;
+//						}
+//					}
+//				}
+//				if(!aj) {
+//					res[taille] = new ArrayList<Classe>();
+//					res[taille].add(cl);
+//					taille ++;
+//				}
+//			}else {
+//				res[taille] = new ArrayList<Classe>();
+//				res[taille].add(cl);
+//				taille ++;
+//			}
+//		}
+		for(Classe classe : list) {
+			if(pack.size()>0) {
+				boolean trv = false;
+				for(Package paquage : pack){
+					if(paquage != null) {
+						if(classe.getPaquage().equals(paquage.getName())) {
+							paquage.addClasse(classe);
+							trv = true;
 						}
 					}
 				}
-				if(!aj) {
-					res[taille] = new ArrayList<Classe>();
-					res[taille].add(cl);
-					taille ++;
-				}
+				if(!trv) {
+					Package p = new Package(classe.getPaquage());
+					pack.add(p);
+			}
 			}else {
-				res[taille] = new ArrayList<Classe>();
-				res[taille].add(cl);
-				taille ++;
+				Package p = new Package(classe.getPaquage());
+				pack.add(p);
 			}
 		}
-		return res;
 	}
 
 	public static void main(String [] args) throws IOException {
@@ -127,45 +150,55 @@ public class svg {
 		Classe c3 = créationClasse3();
 		Classe c4 = créationClasse4();
 		Classe c5 = créationClasse5();
+		Classe c6 = créationClasse6();
+		Classe c7 = créationClasse1();
 		
 		list.add(c1);
 		list.add(c2);
 		list.add(c3);
 		list.add(c4);
 		list.add(c5);
+		list.add(c6);
+		list.add(c7);
+		
 		List<Classe> liaison = new ArrayList<>();
 		liaison.add(c1);
 		liaison.add(c3);
 		liaison.add(c5);
+		liaison.add(c4);
+		liaison.add(c6);
 		c2.setLiaison(liaison);
 		
 		List<Classe> liaison2 = new ArrayList<>();
 		liaison2.add(c1);
 		c4.setLiaison(liaison2);
 		
-		test.paintClasse(svgGenerator,c1);
-		test.paintClasse(svgGenerator,c2);
-		test.paintClasse(svgGenerator,c3);
-		test.paintClasse(svgGenerator,c4);
-		test.paintClasse(svgGenerator,c5);
-		test.paintLink(svgGenerator, c2);
-		test.paintLink(svgGenerator, c4);
+		List<Classe> liaison3 = new ArrayList<>();
+		liaison3.add(c1);
+		liaison3.add(c3);
+		c5.setLiaison(liaison3);
 		
-		List<Classe> tab = new ArrayList<>();
-		c1.setPaquage("IUT");c2.setPaquage("IUTTTT");c3.setPaquage("IUT");c4.setPaquage("IUTT");c5.setPaquage("IUT");
-		tab.add(c5);tab.add(c4);tab.add(c3);tab.add(c2);tab.add(c1);
-		List[] listF = new ArrayList[tab.size()];
-		listF = test.triClasse(tab);
-//		for(List<Classe> l : listF) {
-//			if(l != null) {
-//				System.out.println(l.getClass() + " : ");
-//				for(Classe c : l) {
-//					System.out.println(c.toString());
-//				}
-//				System.out.println(" ///// ");
-//			}
-//		}
-		test.paintPackage(svgGenerator,tab);
+		List<Package> paqu = new ArrayList<>();
+		test.triClasse(paqu);
+		
+		for (Classe c : list) {
+			test.paintClasse(svgGenerator, c);
+		}
+		for (Classe c : list) {
+			test.paintLink(svgGenerator, c);
+		}
+		
+		
+		for(Package p : paqu) {
+			if(p != null) {
+				System.out.println(p.getName() + " : ");
+				for(Classe c : p.getClasse()) {
+					System.out.println(c.toString());
+				}
+				System.out.println(" ///// ");
+			}
+		}
+		test.paintPackage(svgGenerator,list);
 		/* sortir le résultat*/
 		svgGenerator.stream("Image_TestSVGGen.svg");
 	}
@@ -184,7 +217,7 @@ public class svg {
 		l2.add("+ getDDN() : Date()");
 		l2.add("+ getClasse() : Classe()");
 		l2.add("+ toString() : String");
-		return new Classe("Etudiant",l,l2);
+		return new Classe("Etudiant",l,l2, "IUT");
 	}
 
 	public static Classe créationClasse2() {
@@ -197,7 +230,7 @@ public class svg {
 		l2.add("+ getEtud() : List<Etudiant>");
 		l2.add("+ getProf() : Professeur()");
 		l2.add("+ toString() : String");
-		return new Classe("Classe",l,l2);
+		return new Classe("Classe",l,l2, "IUT");
 	}
 
 	public static Classe créationClasse3() {
@@ -214,7 +247,7 @@ public class svg {
 		l2.add("+ getDDN() : Date()");
 		l2.add("+ getnbrEleve : Integer");
 		l2.add("+ toString() : String");
-		return new Classe("Professeur",l,l2);
+		return new Classe("Professeur",l,l2, "IUT");
 	}
 
 	public static Classe créationClasse4() {
@@ -225,7 +258,7 @@ public class svg {
 		l2.add("+ getnbrEleve() : Integer");
 		l2.add("+ getNom() : String");
 		l2.add("+ toString() : String");
-		return new Classe("Matiére",l,l2);
+		return new Classe("Matiére",l,l2, "IUT");
 	}
 
 	public static Classe créationClasse5() {
@@ -236,7 +269,18 @@ public class svg {
 		l2.add("+ getNum() : Integer");
 		l2.add("+ toString() : String");
 		l2.add("+ setNum() : void");
-		return new Classe("Groupe",l,l2);
+		return new Classe("Groupe",l,l2, "IUT");
+	}
+	
+	public static Classe créationClasse6() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Num : Integer");
+		l.add("# tabClasse : Classe[]()");
+		l2.add("+ getNum() : Integer");
+		l2.add("+ toString() : String");
+		l2.add("+ setNum() : void");
+		return new Classe("test",l,l2, "IUT");
 	}
 
 } 
