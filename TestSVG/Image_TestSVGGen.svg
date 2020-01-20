@@ -161,14 +161,14 @@
       /><line y2="287" fill="none" x1="330" x2="230" y1="340"
       /><line y2="287" fill="none" x1="530" x2="630" y1="340"
       /><line y2="287" fill="none" x1="330" x2="230" y1="340"
-      /><rect fill="none" x="5" width="1080" height="660" y="5"
+      /><rect fill="none" x="5" width="855" height="540" y="5"
       /><text x="7" xml:space="preserve" y="18" stroke="none"
       >IUT</text
-      ><rect fill="none" x="5" width="24" height="18" y="5"
-      /><rect fill="none" x="5" width="180" height="110" y="105"
-      /><text x="7" xml:space="preserve" y="1018" stroke="none"
+      ><rect fill="none" x="5" width="26" height="18" y="5"
+      /><line y2="605" fill="none" x1="5" x2="290" y1="605"
+      /><text x="7" xml:space="preserve" y="618" stroke="none"
       >IUTT</text
-      ><rect fill="none" x="5" width="32" height="1018" y="1005"
+      ><rect fill="none" x="5" width="34" height="18" y="605"
     /></g
   ></g
 ></svg
