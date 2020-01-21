@@ -216,6 +216,8 @@ public class svg {
 		}
 		Element root = svgGenerator.getRoot();
 		root.setAttributeNS(null, "viewbox", "0 0 850 850");
+		root.setAttributeNS(null, "width", "900");
+		root.setAttributeNS(null, "height", "1000");
 		/* sortir le résultat*/
 		Writer out = new OutputStreamWriter(new FileOutputStream("svg.svg"), "UTF-8");
 		
