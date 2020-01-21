@@ -16,39 +16,45 @@ import org.w3c.dom.Element;
 
 
 public class svg {
-	static int cmp = 0;
 	private static List<Classe> list = new ArrayList<>();
 
-	public static void paintClasse(SVGGraphics2D svgGenerator, Classe classe) {//Création UML de classe
+	public static void paintClasse(SVGGraphics2D svgGenerator, List<Package> p) {//Création UML de classe
 		svgGenerator.setPaint(Color.BLACK);
-		List<String> att = classe.getAttribut();
-		List<String> meth = classe.getMethode();
-		int y = cmp / 3 *300;
-		int x = (cmp%3)*300;
-		int pos = 0;
-		svgGenerator.drawRect(30+x, 40+y, 200, 40);
-		svgGenerator.drawString(classe.getName(), 105+x, 65+y);
-		pos = 67;
-		int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
-		svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
-		for(String s : att) {
-			svgGenerator.drawString(s, 50+x, pos+y+30);
-			pos+=17;//+17 car size()*17
-			//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
+		int cmp = 0;
+		for (Package p1 : p) {
+			for(Classe classe : p1.getClasse()) {
+				List<String> att = classe.getAttribut();
+				List<String> meth = classe.getMethode();
+				int y = p1.cmpC / 3 *300 + p1.getY();
+				int x = (p1.cmpC%3)*300 + p1.getX();
+				int pos = 0;
+				svgGenerator.drawRect(30+x, 40+y, 200, 40);
+				svgGenerator.drawString(classe.getName()+cmp, 105+x, 65+y);
+				pos = 67;
+				int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
+				svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
+				for(String s : att) {
+					svgGenerator.drawString(s, 50+x, pos+y+30);
+					pos+=17;//+17 car size()*17
+					//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
+				}
+				int yrectmeth = meth.size()*17+10;
+				svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
+				pos = pos+10;
+				for(String s : meth) {
+					svgGenerator.drawString(s, 50+x, pos+y+30);
+					pos+=17;//+17 car size()*17
+				}
+				classe.setX(x+30);
+				classe.setY(y+40);
+				classe.setLarg(200);
+				classe.setLongu(yrectmeth+40+yrectatt);
+//				svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnée bonne
+				p1.cmpC += 1;
+				cmp ++ ;
+			}
 		}
-		int yrectmeth = meth.size()*17+10;
-		svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
-		pos = pos+10;
-		for(String s : meth) {
-			svgGenerator.drawString(s, 50+x, pos+y+30);
-			pos+=17;//+17 car size()*17
-		}
-		classe.setX(x+30);
-		classe.setY(y+40);
-		classe.setLarg(200);
-		classe.setLongu(yrectmeth+40+yrectatt);
-//		svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnée bonne
-		cmp += 1;
+		
 	}
 
 	public static void paintPackage(SVGGraphics2D svgGenerator , Package p) {//création du package UML
@@ -59,9 +65,15 @@ public class svg {
 		}else {
 			xlen = p.getClasse().size()*285;
 		}
+		int ylen;
+		if(p.getClasse().size() / 3 > 1) {
+			ylen = (p.getClasse().size()/3)*300 ;
+		}else {
+			ylen = 300;
+		}
 		p.setX(5);
-		p.setY(5+Package.cmpP*600);
-		svgGenerator.drawRect( p.getX(), p.getY(), xlen,(p.getClasse().size()/3)*270 );//A modifié lors changement et création algo UML générale par package
+		p.setY(5+Package.cmpP*650);
+		svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);//A modifié lors changement et création algo UML générale par package
 		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
 		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*8+2, 18);
 		Package.cmpP++;
@@ -196,14 +208,6 @@ public class svg {
 		List<Package> paqu = new ArrayList<>();
 		svg.triClasse(paqu);
 		
-		for (Classe c : list) {
-			svg.paintClasse(svgGenerator, c);
-		}
-		for (Classe c : list) {
-			svg.paintLink(svgGenerator, c);
-		}
-		
-		
 		for(Package p : paqu) {
 			if(p != null) {
 				System.out.println(p.getName() + " : ");
@@ -214,13 +218,15 @@ public class svg {
 				svg.paintPackage(svgGenerator, p);
 			}
 		}
+		svg.paintClasse(svgGenerator, paqu);
+		for (Classe c : list) {
+			svg.paintLink(svgGenerator, c);
+		}
 		Element root = svgGenerator.getRoot();
-		root.setAttributeNS(null, "viewbox", "0 0 850 850");
 		root.setAttributeNS(null, "width", "900");
 		root.setAttributeNS(null, "height", "1000");
 		/* sortir le résultat*/
-		Writer out = new OutputStreamWriter(new FileOutputStream("svg.svg"), "UTF-8");
-		
+		Writer out = new OutputStreamWriter(new FileOutputStream("Test_SVG.svg"), "UTF-8");
 		svgGenerator.stream(root,out, true, false);
 	}
 
