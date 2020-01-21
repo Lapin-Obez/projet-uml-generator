@@ -216,7 +216,7 @@ public class svg {
 		
 		/* sortir le résultat*/
 //		Writer out = new OutputStreamWriter(System.out, "UTF-8");
-		svgGenerator.stream("Image.svg");
+		svgGenerator.stream("svg.svg");
 	}
 
 	public static Classe créationClasse1() {
@@ -224,7 +224,7 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# ége : Integer");
+		l.add("# age : Integer");
 		l.add("# ddn : Date");
 		l.add("# numEtu : Integer");
 		l.add("# moyenne : float");
@@ -254,7 +254,7 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# ége : Integer");
+		l.add("# age : Integer");
 		l.add("# ddn : Date");
 		l.add("# numProf : Integer");
 		l.add("# nbrEleve : Integer");
