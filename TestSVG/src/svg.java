@@ -274,7 +274,7 @@ public class svg {
 		l2.add("+ getnbrEleve() : Integer");
 		l2.add("+ getNom() : String");
 		l2.add("+ toString() : String");
-		return new Classe("Matiére",l,l2, "IUT");
+		return new Classe("Matiere",l,l2, "IUT");
 	}
 
 	public static Classe créationClasse5() {
