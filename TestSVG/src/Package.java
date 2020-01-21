@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Package {
 		public static int cmpP = 0;
+		public static int bas = 0;
 		public int cmpC = 0;
 		private String name;
 		private List<Classe> classe;
@@ -12,7 +13,16 @@ public class Package {
 		private int y = 0;
 		private int larg = 0;
 		private int longu = 0;
+		private List<Package> Paqlist;
 		
+		public List<Package> getPaqlist() {
+			return Paqlist;
+		}
+
+		public void addPaquage(Package paq) {
+			Paqlist.add(paq);
+		}
+
 		public Package(String name) {
 			super();
 			this.name = name;
