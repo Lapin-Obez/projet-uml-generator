@@ -69,13 +69,23 @@ public class svg {
 			tmp ++;
 		}
 		ylen = ((p.getClasse().size()/3)+tmp)*305 ;
-		p.setX(5);
-		p.setY(5+Package.bas);
+		p.setX(5 + Package.cmpP%2 * 900);
+		if(Package.cmpP%2>0) {
+			p.setY(5 + Package.cmpP / 2 * 900);
+		}else {
+			p.setY(Package.bas);
+		}
+		p.setLarg(xlen);
+		p.setLongu(ylen);
 		svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);//A modifié lors changement et création algo UML générale par package
 		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
 		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*7+5, 18);
 		Package.cmpP++;
-		Package.bas = Package.bas + ylen+20;
+		System.out.println(Package.bas);
+		if(Package.bas < p.getY() + ylen+30) {
+			Package.bas = p.getY() + ylen+30;
+		}
+		System.out.println(Package.bas);
 	}
 	
 	public static void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
@@ -177,10 +187,10 @@ public class svg {
 		Classe c4 = créationClasse4();
 		Classe c5 = créationClasse5();
 		Classe c6 = créationClasse6();
-		Classe c8 = créationClasse3();
-		Classe c7 = créationClasse1();
-		Classe c9 = créationClasse7();
-		
+		Classe c8 = créationClasse8();
+		Classe c7 = créationClasse7();
+		Classe c9 = créationClasse9();
+
 		list.add(c1);
 		list.add(c2);
 		list.add(c3);
@@ -191,23 +201,18 @@ public class svg {
 		list.add(c8);
 		list.add(c9);
 		
-		List<Classe> liaison = new ArrayList<>();
-		liaison.add(c1);
-		liaison.add(c3);
-		liaison.add(c5);
-		liaison.add(c4);
-		liaison.add(c6);
-		c2.setLiaison(liaison);
+		c2.addLiaison(c1);
+		c2.addLiaison(c3);
+		c2.addLiaison(c5);
+		c2.addLiaison(c4);
+		c2.addLiaison(c6);
+
+		c4.addLiaison(c1);
 		
-		List<Classe> liaison2 = new ArrayList<>();
-		liaison2.add(c1);
-		c4.setLiaison(liaison2);
-		
-		List<Classe> liaison3 = new ArrayList<>();
-		liaison3.add(c1);
-		liaison3.add(c3);
-		c5.setLiaison(liaison3);
-		
+		c5.addLiaison(c1);
+		c5.addLiaison(c3);
+		c9.addLiaison(c8);
+		c2.addLiaison(c9);
 		List<Package> paqu = new ArrayList<>();
 		svg.triClasse(paqu);
 		
@@ -225,8 +230,9 @@ public class svg {
 		for (Classe c : list) {
 			svg.paintLink(svgGenerator, c);
 		}
+		
 		Element root = svgGenerator.getRoot();
-		root.setAttributeNS(null, "width", "900");
+		root.setAttributeNS(null, "width", "1800");
 		root.setAttributeNS(null, "height", Package.bas+"");
 		/* sortir le résultat*/
 		Writer out = new OutputStreamWriter(new FileOutputStream("Test_SVG.svg"), "UTF-8");
@@ -322,6 +328,31 @@ public class svg {
 		l2.add("+ toString() : String");
 		l2.add("+ setNum() : void");
 		return new Classe("Sett",l,l2, "testO");
+	}
+	
+	public static Classe créationClasse8() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Num : Integer");
+		l.add("# tabClasse : Classe[]()");
+		l2.add("+ getNum() : Integer");
+		l2.add("+ toString() : String");
+		l2.add("+ action() : String");
+		l2.add("+ lancer_de_dé() : String");
+		l2.add("+ setNum() : void");
+		return new Classe("T32",l,l2, "Robot");
+	}
+	
+	public static Classe créationClasse9() {
+		List<String> l = new ArrayList<>();
+		List<String> l2 = new ArrayList<>();
+		l.add("# Num : Integer");
+		l.add("# tabClasse : Classe[]()");
+		l2.add("+ getNum() : Integer");
+		l2.add("+ toString() : String");
+		l2.add("+ crier() : String");
+		l2.add("+ setNum() : void");
+		return new Classe("Terminator",l,l2, "Robot");
 	}
 
 } 

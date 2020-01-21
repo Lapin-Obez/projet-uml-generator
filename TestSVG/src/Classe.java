@@ -91,6 +91,9 @@ public class Classe {
 	public List<Classe> getLiaison() {
 		return liaison;
 	}
+	public void addLiaison(Classe c) {
+		this.liaison.add(c);
+	}
 	public void setLiaison(List<Classe> liaison) {
 		this.liaison = liaison;
 	}
