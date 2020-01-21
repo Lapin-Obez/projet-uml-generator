@@ -1,7 +1,6 @@
 package src;
 
-import java.awt.*;
-import java.io.File;
+import java.awt.Color;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -13,6 +12,7 @@ import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 
 public class svg {
@@ -214,11 +214,12 @@ public class svg {
 				svg.paintPackage(svgGenerator, p);
 			}
 		}
-		
+		Element root = svgGenerator.getRoot();
+		root.setAttributeNS(null, "viewbox", "0 0 850 850");
 		/* sortir le résultat*/
 		Writer out = new OutputStreamWriter(new FileOutputStream("svg.svg"), "UTF-8");
 		
-		svgGenerator.stream(out, true);
+		svgGenerator.stream(root,out, true, false);
 	}
 
 	public static Classe créationClasse1() {
