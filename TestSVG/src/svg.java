@@ -1,7 +1,10 @@
 package src;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,7 +149,7 @@ public class svg {
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
 		// Création d'une instance de SVG
-		Document document = domImpl.createDocument("", "svg", null);
+		Document document = domImpl.createDocument("http://www.w3.org/2000/svg", "svg", null);
 
 		//Création d'une instance de SVG Generator
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
@@ -212,7 +215,8 @@ public class svg {
 		}
 		
 		/* sortir le résultat*/
-		svgGenerator.stream("Image_TestSVGGen.svg");
+//		Writer out = new OutputStreamWriter(System.out, "UTF-8");
+		svgGenerator.stream("Image.svg");
 	}
 
 	public static Classe créationClasse1() {
