@@ -2,6 +2,7 @@ package src;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -215,8 +216,9 @@ public class svg {
 		}
 		
 		/* sortir le résultat*/
-//		Writer out = new OutputStreamWriter(System.out, "UTF-8");
-		svgGenerator.stream("svg.svg");
+		Writer out = new OutputStreamWriter(new FileOutputStream("svg.svg"), "UTF-8");
+		
+		svgGenerator.stream(out, true);
 	}
 
 	public static Classe créationClasse1() {
@@ -224,7 +226,7 @@ public class svg {
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
 		l.add("# Prenom : String");
-		l.add("# age : Integer");
+		l.add("# âge : Integer");
 		l.add("# ddn : Date");
 		l.add("# numEtu : Integer");
 		l.add("# moyenne : float");
