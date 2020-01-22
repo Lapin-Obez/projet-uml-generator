@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Package {
 		public static int cmpP = 0;
-		public static int bas = 0;
+		public static int bas = 5;
+		public static int ancienbas = 5;
+		public static int droite = 0;
 		public int cmpC = 0;
 		private String name;
 		private List<Classe> classe;
