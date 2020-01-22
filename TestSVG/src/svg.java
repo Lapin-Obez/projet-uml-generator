@@ -16,9 +16,8 @@ import org.w3c.dom.Element;
 
 
 public class svg {
-	private static List<Classe> list = new ArrayList<>();
-
-	public static void paintClasse(SVGGraphics2D svgGenerator, List<Package> p) {//Création UML de classe
+	
+	public static void paintClasse(SVGGraphics2D svgGenerator, List<Package> p) {//Creation UML de classe
 		svgGenerator.setPaint(Color.BLACK);
 		for (Package p1 : p) {
 			for(Classe classe : p1.getClasse()) {
@@ -30,7 +29,7 @@ public class svg {
 				svgGenerator.drawRect(30+x, 40+y, 200, 40);
 				svgGenerator.drawString(classe.getName(), 105+x, 65+y);
 				pos = 67;
-				int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter décalage
+				int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter decalage
 				svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
 				for(String s : att) {
 					svgGenerator.drawString(s, 50+x, pos+y+30);
@@ -48,14 +47,14 @@ public class svg {
 				classe.setY(y+40);
 				classe.setLarg(200);
 				classe.setLongu(yrectmeth+40+yrectatt);
-//				svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnée bonne
+//				svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnee bonne
 				p1.cmpC += 1;
 			}
 		}
 		
 	}
 
-	public static void paintPackage(SVGGraphics2D svgGenerator , Package p) {//création du package UML
+	public static void paintPackage(SVGGraphics2D svgGenerator , Package p) {//creation du package UML
 		svgGenerator.setPaint(Color.BLACK);
 		int xlen;
 		if( p.getClasse().size() >= 3) {
@@ -77,7 +76,7 @@ public class svg {
 		}
 		p.setLarg(xlen);
 		p.setLongu(ylen);
-		svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);//A modifié lors changement et création algo UML générale par package
+		svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);//A modifie lors changement et creation algo UML generale par package
 		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
 		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*7+5, 18);
 		Package.cmpP++;
@@ -165,55 +164,32 @@ public class svg {
 			}
 		}
 	}
-
-	public static void main(String [] args) throws IOException {
-		/*Creation de l'instance Document qui sera utilisé pour construire le contenu XML
-	      création d'une instance de svggenerator (graphics2D) en utilisant le doc créé */
-		// Récupére la DOMImplementation
+	
+	public static void createUML(List<Classe> list, String name) {
+		/*Creation de l'instance Document qui sera utilise pour construire le contenu XML
+	      creation d'une instance de svggenerator (graphics2D) en utilisant le doc cree */
+		// Recupere la DOMImplementation
 		DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
 
-		// Création d'une instance de SVG
+		// Creation d'une instance de SVG
 		Document document = domImpl.createDocument("http://www.w3.org/2000/svg", "svg", null);
 
-		//Création d'une instance de SVG Generator
+		//Creation d'une instance de SVG Generator
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
 		/* Dessine sur le composant svggenerator */
 		
 		svgGenerator.setPaint(Color.white);
 		
-		Classe c1 = créationClasse1();
-		Classe c2 = créationClasse2();
-		Classe c3 = créationClasse3();
-		Classe c4 = créationClasse4();
-		Classe c5 = créationClasse5();
-		Classe c6 = créationClasse6();
-		Classe c7 = créationClasse7();
-		
-		list.add(c1);
-		list.add(c2);
-		list.add(c3);
-		list.add(c4);
-		list.add(c5);
-		list.add(c6);
-		list.add(c7);
-		
-		c2.addLiaison(c1);
-		c2.addLiaison(c5);
-		c2.addLiaison(c4);
-		c2.addLiaison(c6);
-		c7.addLiaison(c6);
-		
 		List<Package> paqu = new ArrayList<>();
 		svg.triClasse(paqu, list);
-		
 		for(Package p : paqu) {
 			if(p != null) {
-				System.out.println(p.getName() + " : ");
-				for(Classe c : p.getClasse()) {
-					System.out.println(c.toString());
-				}
-				System.out.println(" ///// ");
+//				System.out.println(p.getName() + " : ");
+//				for(Classe c : p.getClasse()) {
+//					System.out.println(c.toString());
+//				}
+//				System.out.println(" ///// ");
 				svg.paintPackage(svgGenerator, p);
 			}
 		}
@@ -225,12 +201,40 @@ public class svg {
 		Element root = svgGenerator.getRoot();
 		root.setAttributeNS(null, "width", Package.droite+"");
 		root.setAttributeNS(null, "height", Package.bas+"");
-		/* sortir le résultat*/
-		Writer out = new OutputStreamWriter(new FileOutputStream("Test_SVG.svg"), "UTF-8");
+		/* sortir le resultat*/
+		Writer out = new OutputStreamWriter(new FileOutputStream(name+".svg"), "UTF-8");
 		svgGenerator.stream(root,out, true, false);
 	}
 
-	public static Classe créationClasse1() {
+	public static void main(String [] args) throws IOException {
+		
+		List<Classe> list = new ArrayList<>();
+		Classe c1 = creationClasse1();
+		Classe c2 = creationClasse2();
+		Classe c3 = creationClasse3();
+		Classe c4 = creationClasse4();
+		Classe c5 = creationClasse5();
+		Classe c6 = creationClasse6();
+		Classe c7 = creationClasse7();
+		
+		list.add(c1);
+		list.add(c2);
+		list.add(c3);
+		list.add(c4);
+		list.add(c5);
+		list.add(c6);
+		list.add(c7);
+		
+		c2.addLiaison(c1);
+		c2.addLiaison(c5);
+		c4.addLiaison(c2);
+		c2.addLiaison(c6);
+		c7.addLiaison(c6);
+		
+		svg.createUML(list, "test-UML-Create");
+	}
+
+	public static Classe creationClasse1() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
@@ -247,7 +251,7 @@ public class svg {
 		return new Classe("Etudiant",l,l2, "IUT");
 	}
 
-	public static Classe créationClasse2() {
+	public static Classe creationClasse2() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
@@ -260,7 +264,7 @@ public class svg {
 		return new Classe("Classe",l,l2, "IUT");
 	}
 
-	public static Classe créationClasse3() {
+	public static Classe creationClasse3() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
@@ -277,7 +281,7 @@ public class svg {
 		return new Classe("Professeur",l,l2, "IUT");
 	}
 
-	public static Classe créationClasse4() {
+	public static Classe creationClasse4() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Nom : String");
@@ -288,7 +292,7 @@ public class svg {
 		return new Classe("Matiere",l,l2, "IUT");
 	}
 
-	public static Classe créationClasse5() {
+	public static Classe creationClasse5() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Num : Integer");
@@ -299,7 +303,7 @@ public class svg {
 		return new Classe("Groupe",l,l2, "IUT");
 	}
 	
-	public static Classe créationClasse6() {
+	public static Classe creationClasse6() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Num : Integer");
@@ -310,7 +314,7 @@ public class svg {
 		return new Classe("test",l,l2, "testO");
 	}
 	
-	public static Classe créationClasse7() {
+	public static Classe creationClasse7() {
 		List<String> l = new ArrayList<>();
 		List<String> l2 = new ArrayList<>();
 		l.add("# Num : Integer");
