@@ -90,7 +90,7 @@ public class svg {
 		}
 	}
 	
-	public static void paintLink(SVGGraphics2D svgGenerator, Classe classe) {
+	public static void paintLink(SVGGraphics2D svgGenerator, Classe classe, List<Classe> list) {
 		svgGenerator.setPaint(Color.BLACK);
 		for(Classe c : list) {
 			for(Classe s : classe.getLiaison()) {
@@ -117,7 +117,7 @@ public class svg {
 		}
 	}
 
-	public static void triClasse(List<Package> pack) {//algo pour trier les classe selon leur package dans un tableau de list
+	public static void triClasse(List<Package> pack, List<Classe> list) {//algo pour trier les classe selon leur package dans un tableau de list
 //		List<Classe>[] res = new ArrayList[tab.size()]; ancien modèle de tri
 //		int taille = 0 ;
 //		for(Classe cl : tab) {
@@ -179,8 +179,7 @@ public class svg {
 		SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
 		/* Dessine sur le composant svggenerator */
-		svg test;
-		test = new svg();
+		
 		svgGenerator.setPaint(Color.white);
 		
 		Classe c1 = créationClasse1();
@@ -189,14 +188,7 @@ public class svg {
 		Classe c4 = créationClasse4();
 		Classe c5 = créationClasse5();
 		Classe c6 = créationClasse6();
-		Classe c8 = créationClasse8();
 		Classe c7 = créationClasse7();
-		Classe c9 = créationClasse9();
-		Classe c10 = créationClasse10();
-		Classe c11 = créationClasse11();
-		Classe c12 = créationClasse10();
-		Classe c13 = créationClasse10();
-		Classe c14 = créationClasse10();
 		
 		list.add(c1);
 		list.add(c2);
@@ -205,34 +197,15 @@ public class svg {
 		list.add(c5);
 		list.add(c6);
 		list.add(c7);
-		list.add(c8);
-		list.add(c9);
-		list.add(c10);
-		list.add(c11);
-		list.add(c12);
-		list.add(c13);
-		list.add(c14);
 		
 		c2.addLiaison(c1);
-		c2.addLiaison(c3);
 		c2.addLiaison(c5);
 		c2.addLiaison(c4);
 		c2.addLiaison(c6);
-
-		c4.addLiaison(c1);
-		
-		c5.addLiaison(c1);
-		c5.addLiaison(c3);
-		c9.addLiaison(c8);
-		c2.addLiaison(c9);
-		c10.addLiaison(c7);
-		c11.addLiaison(c9);
-		c11.addLiaison(c10);
-		c11.addLiaison(c14);
-		c12.addLiaison(c10);
+		c7.addLiaison(c6);
 		
 		List<Package> paqu = new ArrayList<>();
-		svg.triClasse(paqu);
+		svg.triClasse(paqu, list);
 		
 		for(Package p : paqu) {
 			if(p != null) {
@@ -246,7 +219,7 @@ public class svg {
 		}
 		svg.paintClasse(svgGenerator, paqu);
 		for (Classe c : list) {
-			svg.paintLink(svgGenerator, c);
+			svg.paintLink(svgGenerator, c, list);
 		}
 		
 		Element root = svgGenerator.getRoot();
@@ -345,52 +318,8 @@ public class svg {
 		l2.add("+ getNum() : Integer");
 		l2.add("+ toString() : String");
 		l2.add("+ setNum() : void");
-		return new Classe("Sett",l,l2, "testO");
+		return new Classe("Intermittant",l,l2, "testO");
 	}
 	
-	public static Classe créationClasse8() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Num : Integer");
-		l.add("# tabClasse : Classe[]()");
-		l2.add("+ getNum() : Integer");
-		l2.add("+ toString() : String");
-		l2.add("+ action() : String");
-		l2.add("+ lancer_de_dé() : String");
-		l2.add("+ setNum() : void");
-		return new Classe("T32",l,l2, "Robot");
-	}
-	
-	public static Classe créationClasse9() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Num : Integer");
-		l.add("# tabClasse : Classe[]()");
-		l2.add("+ getNum() : Integer");
-		l2.add("+ toString() : String");
-		l2.add("+ crier() : String");
-		l2.add("+ setNum() : void");
-		return new Classe("Terminator",l,l2, "Robot");
-	}
-	
-	public static Classe créationClasse10() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# Num : Integer");
-		l.add("# QI : Integer");
-		l2.add("+ toString() : String");
-		l2.add("+ setQi(x : Integer) : void");
-		return new Classe("Tanguy",l,l2, "Tesseract");
-	}
-	
-	public static Classe créationClasse11() {
-		List<String> l = new ArrayList<>();
-		List<String> l2 = new ArrayList<>();
-		l.add("# QI : Integer");
-		l2.add("+ toString() : String");
-		l2.add("+ setQi(x : Integer) : void");
-		return new Classe("Mat",l,l2, "Avengers");
-	}
-
 
 } 

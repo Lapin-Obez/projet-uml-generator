@@ -23,7 +23,13 @@ public class Classe {
 		this.paquage = pack;
 	}
 	
-	
+	public Classe(String name, List<String> attribut, List<String> methode, String pack) {
+		super();
+		this.name = name;
+		this.attribut = attribut;
+		this.methode = methode;
+		this.paquage = pack;
+	}
 
 	public String getPaquage() {
 		return paquage;
@@ -63,13 +69,6 @@ public class Classe {
 		this.larg = larg;
 	}
 
-	public Classe(String name, List<String> attribut, List<String> methode, String pack) {
-		super();
-		this.name = name;
-		this.attribut = attribut;
-		this.methode = methode;
-		this.paquage = pack;
-	}
 	public String getName() {
 		return name;
 	}
