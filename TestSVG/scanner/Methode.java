@@ -1,5 +1,8 @@
 package scanner;
 
+/**
+ *
+ */
 
 /**
  * @author UTILISATEUR
@@ -49,15 +52,15 @@ public class Methode {
     @Override
     public String toString() {
         if(visibilite.equals("public")) {
-            return "+ "+ name+" ("+getParametres()+")"+" : "+typeRetour;
+            return "+ "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
         }else if(visibilite.equals("private")) {
-            return "- "+ name+" ("+getParametres()+")"+" : "+typeRetour;
+            return "- "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
         }else if(visibilite.equals("protected")) {
-            return "# "+ name+" ("+getParametres()+")"+" : "+typeRetour;
+            return "# "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
         }else if(visibilite.equals("abstract")) {
-            return "<<abstract>> "+ name+" ("+getParametres()+")"+" : "+typeRetour;
+            return "<<abstract>> "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
         }else {
-            return " "+ name+" ("+getParametres()+")"+" : "+typeRetour;
+            return " "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
         }
 
     }

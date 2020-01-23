@@ -1,15 +1,18 @@
 package src;
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,83 +20,116 @@ import org.w3c.dom.Element;
 
 public class svg {
 	
-	public static void paintClasse(SVGGraphics2D svgGenerator, List<Package> p) {//Creation UML de classe
+	/**
+	 * Méthode qui dessine les classes
+	 * @param svgGenerator SVGGraphics2D où on dessine l'UML
+	 * @param p list des packages
+	 */
+	private static void paintClasse(SVGGraphics2D svgGenerator, List<Package> p) {//Creation UML de classe
 		svgGenerator.setPaint(Color.BLACK);
-		for (Package p1 : p) {
+		for (Package p1 : p) {//parcours les package et leur classe
 			for(Classe classe : p1.getClasse()) {
 				List<String> att = classe.getAttribut();
 				List<String> meth = classe.getMethode();
 				int y = p1.cmpC / 3 *300 + p1.getY();
-				int x = (p1.cmpC%3)*270 + p1.getX();
+				int x = (p1.cmpC%3)*280 + p1.getX();//calcule des positions des classes
 				int pos = 0;
-				svgGenerator.drawRect(30+x, 40+y, 200, 40);
-				svgGenerator.drawString(classe.getName(), 105+x, 65+y);
+				
+				//calcul largeur maximale
+				int largmax = 0;
+				for (String s : classe.getAttribut()) {
+					if(s.length()*10 >= largmax) {
+						largmax = s.length()*10;
+					}
+				}
+				for (String s : classe.getAttribut()) {
+					if(s.length()*10 >= largmax) {
+						largmax = s.length()*10;
+					}
+				}
+				largmax = largmax + 5 ;//Evité le décalage car on n'écrit pas collé au bordure de la classe
+				
+				svgGenerator.drawRect(30+x, 40+y, largmax, 40);
+				svgGenerator.drawString(classe.getName(), largmax/2+x, 65+y);//dessine nm de la classe
 				pos = 67;
 				int yrectatt = att.size()*17+10;//+10 car size()*17 en taille mais on commence pas direct donc doit ajouter decalage
-				svgGenerator.drawRect(30+x, 80+y, 200, yrectatt);
-				for(String s : att) {
-					svgGenerator.drawString(s, 50+x, pos+y+30);
+				svgGenerator.drawRect(30+x, 80+y, largmax, yrectatt);
+				for(String s : att) {//Ecrit les attributs
+					svgGenerator.drawString(s, 40+x, pos+y+30);
 					pos+=17;//+17 car size()*17
 					//System.out.println("Tour : " +cmp+ "  Position y : "+(pos+y)+ "       Position x : "+(30+x));
 				}
 				int yrectmeth = meth.size()*17+10;
-				svgGenerator.drawRect(30+x, 80+y+yrectatt, 200, yrectmeth);
+				svgGenerator.drawRect(30+x, 80+y+yrectatt, largmax, yrectmeth);
 				pos = pos+10;
-				for(String s : meth) {
-					svgGenerator.drawString(s, 50+x, pos+y+30);
+				for(String s : meth) {//Ecrit les méthodes
+					svgGenerator.drawString(s, 40+x, pos+y+30);
 					pos+=17;//+17 car size()*17
 				}
 				classe.setX(x+30);
 				classe.setY(y+40);
-				classe.setLarg(200);
-				classe.setLongu(yrectmeth+40+yrectatt);
+				classe.setLarg(largmax);
+				classe.setLongu(yrectmeth+40+yrectatt);//Sauvegarde les position et taille des classes
 //				svgGenerator.drawLine(classe.getX(), classe.getY(), classe.getLarg()+classe.getX(), classe.getLongu()+classe.getY());//test trait diagonale pour tester si coordonnee bonne
-				p1.cmpC += 1;
+				p1.cmpC += 1;//incrémente les compteur de classes dessiné dans le package
 			}
 		}
 		
 	}
-
-	public static void paintPackage(SVGGraphics2D svgGenerator , Package p) {//creation du package UML
+	
+	/**
+	 * méthode qui dessine les packages
+	 * @param svgGenerator SVGGraphics2D où on dessine l'UML
+	 * @param p list des package à dessiner
+	 */
+	private static void paintPackage(SVGGraphics2D svgGenerator , List<Package> pack) {//creation du package UML
 		svgGenerator.setPaint(Color.BLACK);
-		int xlen;
-		if( p.getClasse().size() >= 3) {
-			xlen = 3*285;
-		}else {
-			xlen = p.getClasse().size()*285;
-		}
-		int ylen;
-		int tmp = 0;
-		if(p.getClasse().size() % 3 > 0) {
-			tmp ++;
-		}
-		ylen = ((p.getClasse().size()/3)+tmp)*305 ;
-		p.setX(5 + Package.cmpP%2 * 900);
-		if(Package.cmpP%2>0) {
-			p.setY(Package.ancienbas);
-		}else {
-			p.setY(Package.bas);
-		}
-		p.setLarg(xlen);
-		p.setLongu(ylen);
-		svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);//A modifie lors changement et creation algo UML generale par package
-		svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
-		svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*7+5, 18);
-		Package.cmpP++;
-		if(Package.bas < p.getY() + ylen+30) {
-			Package.ancienbas = Package.bas;
-			Package.bas = p.getY() + ylen+30;
-		}
-		if(Package.droite < p.getX() + xlen+30) {
-			Package.droite = p.getX() + xlen+10;
+		for (Package p : pack) {
+			int xlen;
+			if( p.getClasse().size() >= 3) {
+				xlen = 3*310;
+			}else {
+				xlen = p.getClasse().size()*310;
+			}
+			int ylen;
+			int tmp = 0;
+			if(p.getClasse().size() % 3 > 0) {
+				tmp ++;
+			}
+			ylen = ((p.getClasse().size()/3)+tmp)*315 ;
+			p.setX(5 + Package.cmpP%2 * 1000);
+			if(Package.cmpP%2>0) {
+				p.setY(Package.ancienbas);
+			}else {
+				p.setY(Package.bas);
+			}
+			p.setLarg(xlen);
+			p.setLongu(ylen);//calcule des position et des taille des packages
+			svgGenerator.drawRect( p.getX(), p.getY(), xlen,ylen);
+			svgGenerator.drawString(p.getName(), p.getX()+2, p.getY()+13);
+			svgGenerator.drawRect(p.getX(),p.getY(),p.getName().length()*7+5, 18);//génération du package
+			Package.cmpP++;
+			if(Package.bas < p.getY() + ylen+30) {
+				Package.ancienbas = Package.bas;
+				Package.bas = p.getY() + ylen+30;
+			}
+			if(Package.droite < p.getX() + xlen+30) {
+				Package.droite = p.getX() + xlen+10;
+			}//Mise en mémoire du point le plus bas et le plus à droite pour la création de l'UML
 		}
 	}
 	
-	public static void paintLink(SVGGraphics2D svgGenerator, Classe classe, List<Classe> list) {
+	/**
+	 * Méthode qui dessine les lien entre les classes
+	 * @param svgGenerator SVGGraphics2D où on dessine l'UML
+	 * @param classe La classe dont on veut dessiner les liens
+	 * @param list la list de toutes les classes
+	 */
+	private static void paintLink(SVGGraphics2D svgGenerator, Classe classe, List<Classe> list) {
 		svgGenerator.setPaint(Color.BLACK);
 		for(Classe c : list) {
-			for(Classe s : classe.getLiaison()) {
-				if(s.equals(c)) {
+			for(Classe s : classe.getLiaison()) {//parcours des classes et de leur liaisons
+				if(s.equals(c)) {//création des liens en fonction de leur position
 					if(classe.getX() == s.getX() && classe.getY()>s.getY()) {
 						svgGenerator.drawLine( classe.getX()+classe.getLarg()/2, classe.getY() , s.getX()+s.getLarg()/2 , s.getY()+s.getLongu() );
 					}else if(classe.getX()<s.getX() && classe.getY() == s.getY()) {
@@ -115,8 +151,13 @@ public class svg {
 			}
 		}
 	}
-
-	public static void triClasse(List<Package> pack, List<Classe> list) {//algo pour trier les classe selon leur package dans un tableau de list
+	
+	/**
+	 * algo pour trier les classe selon leur package dans un tableau de list
+	 * @param pack Liste de package initialement vide qui va être remplit
+	 * @param list liste de toute les classes
+	 */
+	private static void triClasse(List<Package> pack, List<Classe> list) {
 //		List<Classe>[] res = new ArrayList[tab.size()]; ancien modèle de tri
 //		int taille = 0 ;
 //		for(Classe cl : tab) {
@@ -141,10 +182,10 @@ public class svg {
 //				taille ++;
 //			}
 //		}
-		for(Classe classe : list) {
-			if(pack.size()>0) {
+		for(Classe classe : list) {//parcours des classes
+			if(pack.size()>0) {//si la liste n'est pas vide
 				boolean trv = false;
-				for(Package paquage : pack){
+				for(Package paquage : pack){//onb parcours les package et on cherche si un existant porte le nom du package de la classe
 					if(paquage != null) {
 						if(classe.getPaquage().equals(paquage.getName())) {
 							paquage.addClasse(classe);
@@ -152,12 +193,12 @@ public class svg {
 						}
 					}
 				}
-				if(!trv) {
+				if(!trv) {//sinon on créé le package 
 					Package p = new Package(classe.getPaquage());
 					p.addClasse(classe);
 					pack.add(p);
 			}
-			}else {
+			}else {//si elle est vide alors on créé le premier package
 				Package p = new Package(classe.getPaquage());
 				p.addClasse(classe);
 				pack.add(p);
@@ -165,6 +206,11 @@ public class svg {
 		}
 	}
 	
+	/**
+	 * Méthode qui dessine sur une image  SVG un diagramme de classe UML
+	 * @param list La liste des classes
+	 * @param name Le nom du fichier .svg qui va être créé
+	 */
 	public static void createUML(List<Classe> list, String name) {
 		/*Creation de l'instance Document qui sera utilise pour construire le contenu XML
 	      creation d'une instance de svggenerator (graphics2D) en utilisant le doc cree */
@@ -183,27 +229,33 @@ public class svg {
 		
 		List<Package> paqu = new ArrayList<>();
 		svg.triClasse(paqu, list);
-		for(Package p : paqu) {
-			if(p != null) {
+//		for(Package p : paqu) { //test du trie des packages
 //				System.out.println(p.getName() + " : ");
 //				for(Classe c : p.getClasse()) {
 //					System.out.println(c.toString());
 //				}
 //				System.out.println(" ///// ");
-				svg.paintPackage(svgGenerator, p);
-			}
-		}
+//				
+//		}
+		svg.paintPackage(svgGenerator, paqu);
 		svg.paintClasse(svgGenerator, paqu);
 		for (Classe c : list) {
 			svg.paintLink(svgGenerator, c, list);
 		}
 		
-		Element root = svgGenerator.getRoot();
+		Element root = svgGenerator.getRoot();//génération des options pour pouvoir redimensionner l'image sur l'IHM
 		root.setAttributeNS(null, "width", Package.droite+"");
 		root.setAttributeNS(null, "height", Package.bas+"");
 		/* sortir le resultat*/
-		Writer out = new OutputStreamWriter(new FileOutputStream(name+".svg"), "UTF-8");
-		svgGenerator.stream(root,out, true, false);
+		Writer out;
+		try {
+			out = new OutputStreamWriter(new FileOutputStream(name+".svg"), "UTF-8");
+			svgGenerator.stream(root,out, true, false);//création du fichier
+		} catch (UnsupportedEncodingException | FileNotFoundException | SVGGraphics2DIOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public static void main(String [] args) throws IOException {
@@ -226,6 +278,7 @@ public class svg {
 		list.add(c7);
 		
 		c2.addLiaison(c1);
+		c1.addLiaison(c2);
 		c2.addLiaison(c5);
 		c4.addLiaison(c2);
 		c2.addLiaison(c6);
@@ -276,7 +329,7 @@ public class svg {
 		l2.add("+ getNumProf() : Integer");
 		l2.add("+ getNomPrenom() : String");
 		l2.add("+ getDDN() : Date()");
-		l2.add("+ getnbrEleve : Integer");
+		l2.add("+ getnbrEleve() : Integer");
 		l2.add("+ toString() : String");
 		return new Classe("Professeur",l,l2, "IUT");
 	}
