@@ -1,4 +1,4 @@
-package src;
+package uml;
 
 import java.awt.Color;
 import java.io.FileNotFoundException;

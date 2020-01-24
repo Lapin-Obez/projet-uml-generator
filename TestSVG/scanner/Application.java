@@ -16,7 +16,7 @@ public class Application {
 	 * @param name nom du fichier .svg à générer
 	 */
 	public static void UML(List<Classe> l, String name) {
-		 List<src.Classe> listC = new ArrayList<>();
+		 List<uml.Classe> listC = new ArrayList<>();
 	        for (Classe classe : l) {//traduction des Classe en src.Classe pour générer l'image UML
 	        	List<String> lmeth = new ArrayList<>();
 				for (String s : classe.getMethodes()) {
@@ -26,19 +26,19 @@ public class Application {
 				for (Argument att : classe.getAttributs()) {
 					latt.add(att.toString());
 				}
-				src.Classe c0 = new src.Classe(classe.getNom(), latt, lmeth, classe.getPackage());
+				uml.Classe c0 = new uml.Classe(classe.getNom(), latt, lmeth, classe.getPackage());
 				listC.add(c0);
 			}
 	        for(Classe classe : l) {//génération des liens sur les classe src.Classe
-	        	src.Classe depart = null;
-	        	for (src.Classe classe2 : listC) {
+	        	uml.Classe depart = null;
+	        	for (uml.Classe classe2 : listC) {
 					if(classe2.getName().equals(classe.getNom())) {
 						depart = classe2;
 					}
 				}
-	        	src.Classe arriver = null;
+	        	uml.Classe arriver = null;
 	        	for (Lien lien : classe.getLiens()) {
-	        		for (src.Classe classe2 : listC) {
+	        		for (uml.Classe classe2 : listC) {
 						if(classe2.getName().equals(lien.getLier().getNom())) {
 							arriver = classe2;
 						}
@@ -47,7 +47,7 @@ public class Application {
 	        		depart.addLiaison(arriver);
 				}
 	        }
-	     src.svg.createUML(listC, name);//appel de la fonction pour créé l'UML
+	     uml.svg.createUML(listC, name);//appel de la fonction pour créé l'UML
 	}
 
     public static void main(String[] args) {
