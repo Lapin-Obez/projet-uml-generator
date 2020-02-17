@@ -1,8 +1,13 @@
 package scanner;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import srcALire.*;
 import srcALire.Cours.*;
@@ -49,6 +54,90 @@ public class Application {
 	        }
 	     uml.svg.createUML(listC, name);//appel de la fonction pour créé l'UML
 	}
+	
+	public static void fichier(List<Classe> l, String name) {
+		List<Package> pack = new ArrayList<>();
+		Map<String,Boolean> tab = new HashMap<>();
+		for (Classe cl : l) {
+			tab.put(cl.getNom(),false);
+		}
+        Application.triClasse(pack, l);
+		try {
+			Writer write = new FileWriter(name+".txt");
+			write.write("@startuml\n");
+			/* Exemple module
+			 * @startuml
+				package "Classic Collections" #DDDDDD {
+				class Dummy1 {
+				  +myMethods()
+				}
+				class Dummy2 {
+				  +hiddenMethod()
+				}
+				}
+				package net.sourceforge.plantuml {
+				class Dummy3 <<Serializable>> {
+					String name
+				}
+				}
+				Dummy3 -- Dummy1
+				@enduml
+			 */
+			for (Package paqu : pack) {
+				write.write("package \""+paqu.getName()+"\"{\n");
+				for (Classe classe : paqu.getList()) {
+					write.write("class "+classe.getNom()+"{\n");
+					for (Argument s : classe.getAttributs()) {
+						write.write("{field} "+s.toString()+"\n");
+					}
+					for (String s : classe.getMethodes()) {
+						write.write("{method} "+s.toString()+"\n");
+					}
+					write.write("}\n");
+				}
+				write.write("}\n");
+			}
+			for (Classe classe : l) {
+				List<Lien> liens = classe.getLiens();
+				for (Lien lien : liens) {
+					if( !tab.get(lien.getLier().getNom()) ) {
+					write.write("\n"+classe.getNom() + "\""+lien.getMultipliciteF()+"\" --- \""+lien.getMultipliciteD() +"\"" + lien.getLier().getNom()+"\n");
+					}
+				}
+				tab.replace(classe.getNom(), true);
+			}
+			write.write("\n@enduml");
+			write.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void triClasse(List<Package> pack, List<Classe> list) {
+		for(Classe classe : list) {//parcours des classes
+			if(pack.size()>0) {//si la liste n'est pas vide
+				boolean trv = false;
+				for(Package paquage : pack){//on parcours les packages et on cherche si un existant porte le nom du package de la classe
+					if(paquage != null) {
+						if(classe.getPackage().equals(paquage.getName())) {
+							paquage.addClasse(classe);
+							trv = true;
+						}
+					}
+				}
+				if(!trv) {//sinon on créé le package 
+					Package p = new Package(classe.getPackage());
+					p.addClasse(classe);
+					pack.add(p);
+			}
+			}else {//si elle est vide alors on créé le premier package
+				Package p = new Package(classe.getPackage());
+				p.addClasse(classe);
+				pack.add(p);
+			}
+		}
+	}
 
     public static void main(String[] args) {
 
@@ -73,7 +162,13 @@ public class Application {
             li.get(i).trouverLien(li);
         }
         
-        Application.UML(li, "test-fusion");
+        List<Package> pack = new ArrayList<>();
+        Application.triClasse(pack, li);
+        for (Package package1 : pack) {
+			System.out.println(" => " + package1+"\n");
+		}
+        Application.fichier(li, "Bonjour");
+        //Application.UML(li, "test-fusion-1");
     }
 
 

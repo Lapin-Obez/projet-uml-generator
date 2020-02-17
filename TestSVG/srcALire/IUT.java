@@ -7,14 +7,14 @@ import srcALire.Groupe.groupe;
 
 public class IUT {
 
-    int nbGroupes;
-    groupe[] groupes;
-    int nbEtudiant;
-    Etudiant[] etudiants;
-    int nbProfesseurs;
-    Enseignant[] professeurs;
-    int nbmatieres;
-    Matiere[] matieres;
+    private int nbGroupes;
+    private groupe[] groupes;
+    private int nbEtudiant;
+    private Etudiant[] etudiants;
+    private int nbProfesseurs;
+    private Enseignant[] professeurs;
+    private int nbmatieres;
+    private Matiere[] matieres;
     public IUT(int a,int b,int c, int d){
         this.nbGroupes =a;
         this.groupes=new groupe[this.nbGroupes];

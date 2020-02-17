@@ -76,8 +76,8 @@ public class Classe {
             Lien li =new Lien(this);
             if(li.presenceLien(cl.get(i))){
                 this.liens.add(li);
-                System.out.println(this.nom+" ---->  "+li.getLier().nom);
-                System.out.println(li.getMultipliciteD()+" -----> "+li.getMultipliciteF());
+//                System.out.println(this.nom+" ---->  "+li.getLier().nom);
+//                System.out.println(li.getMultipliciteD()+" -----> "+li.getMultipliciteF());
             }
         }
     }
@@ -102,11 +102,11 @@ public class Classe {
     }
 
     public String toString() {
-        String res = this.nom+":\n\n";
+        String res = " -> " +this.nom+":\n";
         for(int i =0;i<attributs.length;i++){
             res+=attributs[i].toString()+"\n";
         }
-        res+="\n";
+        res+="----\n";
         for(int i =0;i<methodes.length;i++){
             res+=methodes[i]+"\n";
         }
