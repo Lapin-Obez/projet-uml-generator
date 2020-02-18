@@ -111,7 +111,6 @@ public class Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	private static void triClasse(List<Package> pack, List<Classe> list) {
@@ -161,12 +160,6 @@ public class Application {
         for(int i =0;i<li.size();i++){
             li.get(i).trouverLien(li);
         }
-        
-        List<Package> pack = new ArrayList<>();
-        Application.triClasse(pack, li);
-        for (Package package1 : pack) {
-			System.out.println(" => " + package1+"\n");
-		}
         Application.fichier(li, "Bonjour");
         //Application.UML(li, "test-fusion-1");
     }
