@@ -1,12 +1,12 @@
 @startuml
 package "srcALire.Cours"{
-class Enseignant {
+class Enseignant  {
 {field} - enseignement : List
 {field} - nom : String 
 {method} + ajoutMatiere(: Matiere) : void 
 {method} + retirerMatiere(: Matiere) : void 
 }
-class Matiere {
+class Matiere  {
 {field} - sujet : String 
 {field} - nbHeure : int 
 {field} + profReferent : Enseignant 
@@ -16,13 +16,13 @@ class Matiere {
 {method} + getNbHeure() : int 
 {method} + setNbHeure(: int) : void 
 }
-interface MatiereI {
+interface MatiereI  {
 {method}  ajoutProf(: Enseignant) : void 
 {method}  getSujet() : String 
 }
 }
 package "srcALire.Groupe"{
-class groupe {
+class groupe  {
 {field} - numero : int 
 {field} - etu : Etudiant[]
 {field} - nbEtudiant : int 
@@ -30,7 +30,7 @@ class groupe {
 {method} + getNumero() : int 
 {method} + setNumero(: int) : void 
 }
-class Etudiant {
+class Etudiant  {
 {field} - numEtudiant : String 
 {field} - gr : groupe 
 {method} + setNom(: String) : void 
@@ -42,13 +42,13 @@ class Etudiant {
 {method} + setGr(: groupe) : void 
 {method} + getNom() : String 
 }
-class Personne {
+class Personne  {
 {field} # nom : String 
 {field} # prenom : String 
 }
 }
 package "srcALire"{
-class IUT {
+class IUT  {
 {field} - nbGroupes : int 
 {field} - groupes : groupe[]
 {field} - nbEtudiant : int 
