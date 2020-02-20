@@ -1,79 +1,68 @@
 @startuml
-package "srcALire.Cours"{
-class Enseignant  {
-{field} - enseignement : List
-{field} - nom : String 
-{method} + ajoutMatiere(: Matiere) : void 
-{method} + retirerMatiere(: Matiere) : void 
+package "Cours"{
+class Enseignant {
+{field} - enseignement : List<Matiere>
+{field} - nom : String
+{method} + ajoutMatiere() : void
+{method} + retirerMatiere() : void
 }
-class Matiere  {
-{field} - sujet : String 
-{field} - nbHeure : int 
-{field} + profReferent : Enseignant 
-{method} + ajoutProf(: Enseignant) : void 
-{method} + getSujet() : String 
-{method} + setSujet(: String) : void 
-{method} + getNbHeure() : int 
-{method} + setNbHeure(: int) : void 
+class Matiere {
+{field} - sujet : String
+{field} - nbHeure : int
+{field} + profReferent : Enseignant
+{method} + ajoutProf() : void
+{method} + getSujet() : String
+{method} + setSujet() : void
+{method} + getNbHeure() : int
+{method} + setNbHeure() : void
 }
-interface MatiereI  {
-{method}  ajoutProf(: Enseignant) : void 
-{method}  getSujet() : String 
+interface MatiereI {
+abstract class MatiereI {
+{method}  ajoutProf() : void
+{method}  getSujet() : String
 }
 }
-package "srcALire.Groupe"{
-class groupe  {
-{field} - numero : int 
+package "Groupe"{
+class Etudiant {
+{field} - numEtudiant : String
+{field} - gr : groupe
+{method} + setNom() : void
+{method} + getPrenom() : String
+{method} + setPrenom() : void
+{method} + getNumEtudiant() : String
+{method} + setNumEtudiant() : void
+{method} + getGr() : groupe
+{method} + setGr() : void
+{method} + getNom() : String
+}
+class groupe {
+{field} - numero : int
 {field} - etu : Etudiant[]
-{field} - nbEtudiant : int 
-{method} + ajoutEtu(: Etudiant) : void 
-{method} + getNumero() : int 
-{method} + setNumero(: int) : void 
+{field} - nbEtudiant : int
+{method} + ajoutEtu() : void
+{method} + getNumero() : int
+{method} + setNumero() : void
 }
-class Etudiant  {
-{field} - numEtudiant : String 
-{field} - gr : groupe 
-{method} + setNom(: String) : void 
-{method} + getPrenom() : String 
-{method} + setPrenom(: String) : void 
-{method} + getNumEtudiant() : String 
-{method} + setNumEtudiant(: String) : void 
-{method} + getGr() : groupe 
-{method} + setGr(: groupe) : void 
-{method} + getNom() : String 
-}
-class Personne  {
-{field} # nom : String 
-{field} # prenom : String 
+class Personne {
+{field} # nom : String
+{field} # prenom : String
 }
 }
 package "srcALire"{
-class IUT  {
-{field} - nbGroupes : int 
+abstract class IUT {
+{field} - nbGroupes : int
 {field} - groupes : groupe[]
-{field} - nbEtudiant : int 
+{field} - nbEtudiant : int
 {field} - etudiants : Etudiant[]
-{field} - nbProfesseurs : int 
+{field} - nbProfesseurs : int
 {field} - professeurs : Enseignant[]
-{field} - nbmatieres : int 
+{field} - nbmatieres : int
 {field} - matieres : Matiere[]
 }
 }
 
-Enseignant "1" -- "0"Matiere 
+Matiere ..|> MatiereI
 
-Enseignant "*" -- "0"IUT 
-
-Matiere "*" -- "0"IUT 
-
-Matiere  ..|> MatiereI 
-
-groupe "1" -- "*"Etudiant 
-
-groupe "*" -- "0"IUT 
-
-Etudiant "*" -- "0"IUT 
-
-Etudiant  --|> Personne 
+Etudiant --|> Personne
 
 @enduml

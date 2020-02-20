@@ -13,6 +13,7 @@ public class Methode {
     private String name;
     private Parametre[] parametres;
     private String visibilite;
+    private String[] exceptions;
 
     public Methode(String typeRetour, String name, Parametre[] parametres, String visibilite) {
         super();
@@ -22,7 +23,16 @@ public class Methode {
         this.visibilite = visibilite;
     }
 
-    public String getTypeRetour() {
+    public Methode(String trg, String n, String vis) {
+		super();
+		typeRetour = trg;
+		name = n;
+		parametres = null;
+		this.visibilite = vis;
+		this.exceptions = null;
+	}
+
+	public String getTypeRetour() {
         return typeRetour;
     }
 

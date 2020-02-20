@@ -5,7 +5,7 @@ import srcALire.Cours.Matiere;
 import srcALire.Groupe.Etudiant;
 import srcALire.Groupe.groupe;
 
-public class IUT {
+public abstract class IUT {
 
     private int nbGroupes;
     private groupe[] groupes;

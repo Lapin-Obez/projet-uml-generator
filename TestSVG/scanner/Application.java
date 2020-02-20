@@ -92,8 +92,10 @@ public class Application {
 				write.write("package \""+paqu.getName()+"\"{\n");//création du package en plantuml
 				for (Classe classe : paqu.getList()) {//parcours les classe
 
-					if(classe.isInterface())//affichage si la classe est une interface ou une classe
+					if(classe.isInterface())//affichage si la classe est une interface ou une classe ou abstrait
 						write.write("interface "+classe.getNom()+" {\n");
+					if(classe.isAbstrait())
+						write.write("abstract class "+classe.getNom()+" {\n");
 					else
 						write.write("class "+classe.getNom()+" {\n");
 
@@ -160,36 +162,64 @@ public class Application {
 			}
 		}
 	}
+	
+	public static List<Classe> chercherExtend(List<Classe> li,List<Class> cla){
+		for(int i=0;i<li.size();i++){
+			for (Class e:cla) {
+				if(li.get(i).getNom().equals(Lecture.getTermeC(e.getName()).trim())){
+					if(!li.get(i).isInterface()&&!e.getSuperclass().getName().equals("java.lang.Object")){
+						for(int j =0;j<li.size();j++){
+							if(li.get(j).getNom().equals(Lecture.getTermeC(e.getSuperclass().getName()).trim())){
+								li.get(i).setExt(li.get(j));
+							}
+						}
+					}
+					Class[] inter = e.getInterfaces();
+					if (inter.length>0){
+						for(int k =0;k<inter.length;k++){
+							for(int j =0;j<li.size();j++){
+								if(li.get(j).getNom().equals(Lecture.getTermeC(inter[k].getName()).trim())){
+									li.get(i).addImp(li.get(j));
+									System.out.println(li.get(j).toString());
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+		return li;
+	}
 
 	public static void main(String[] args) {
 
-		System.out.println("-----------------Test avec du vrai code---------------------");
+		System.out.println("-----------------Test avec de vraies classes---------------------");
 		groupe gr = new groupe(1,20);
-		Classe prof = new Classe(new Enseignant("Jean-François Remm").getClass());
-		Classe matiere = new Classe(new Matiere("Programmation objet 2",18).getClass());
-		Classe groupe = new Classe(gr.getClass());
-		Classe etudiant = new Classe(new Etudiant("De Lapatefeuilleté","Hubert","e185475j",gr).getClass());
-		Classe iut = new Classe(new IUT(8, 109, 30, 14).getClass());
-		Classe pers = new Classe(new Personne("gilbert","montagné").getClass());
-		Classe matiereI = new Classe(MatiereI.class);
-		matiereI.interF();
+		Class pr = new Enseignant("Jean-François Remm").getClass();
+		Class ma =new Matiere("Programmation objet 2",18).getClass();
+		Class et =new Etudiant("De Lapatefeuilleté","Hubert","e185475j",gr).getClass();
+		Class de = MatiereI.class;
+		Class s = Personne.class;
+		Class iut = IUT.class;
+
+		List<Class> cla = new LinkedList<>();
+		Class gro= gr.getClass();
+
+		cla.add(pr);
+		cla.add(ma);
+		cla.add(et);
+		cla.add(de);
+		cla.add(gro);
+		cla.add(s);
+		cla.add(iut);
+
 		List<Classe> li = new LinkedList<>();
-		etudiant.addExt(pers);
-		matiere.addImpl(matiereI);
-		li.add(prof);
-		li.add(matiere);
-		li.add(groupe);
-		li.add(etudiant);
-		li.add(iut);
-		li.add(pers);
-		li.add(matiereI);
-		//        System.out.println(prof.toString());
-		//        System.out.println(matiere.toString());
-		//        System.out.println(groupe.toString());
-		//        System.out.println(etudiant.toString());
-		for(int i =0;i<li.size();i++){
-			li.get(i).trouverLien(li);
+		for (int i=0;i<cla.size();i++){
+			li.add(new Classe(cla.get(i)));
 		}
+		li = chercherExtend(li,cla);
+		
 		Application.fichier(li, "Bonjour");
 		//Application.UML(li, "test-fusion-1");
 	}
