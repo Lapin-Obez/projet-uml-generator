@@ -1,13 +1,12 @@
 package srcALire.Groupe;
 
-public class Etudiant {
-    private String nom;
-    private String prenom;
+public class Etudiant extends Personne{
+    
     private String numEtudiant;
     private groupe gr;
+    
     public Etudiant(String n, String p, String num,groupe gr){
-        this.nom = n;
-        this.prenom = p;
+        super(n,p);
         this.numEtudiant = num;
         this.gr = gr;
     }

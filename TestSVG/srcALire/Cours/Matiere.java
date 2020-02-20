@@ -1,6 +1,6 @@
 package srcALire.Cours;
 
-public class Matiere {
+public class Matiere implements MatiereI{
     private String sujet;
     private int nbHeure;
     public Enseignant profReferent;

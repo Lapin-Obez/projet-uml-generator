@@ -1,9 +1,5 @@
 package scanner;
 import java.lang.reflect.*;
-/**
- *
- */
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +15,40 @@ public class Classe {
     private String[] methodes;
     private Argument[] attributs;
     private List<Lien> liens;
+    private boolean extend = false;
+	private boolean implement = false;
+	private boolean interf = false;
+	private Classe ext = null;
+	private List<Classe> impl = new LinkedList<>();
+	
+	public boolean isExtend() {
+		return extend;
+	}
+	public boolean isImplement() {
+		return implement;
+	}
+	public Classe getExt() {
+		return ext;
+	}
+	public List<Classe> getImpl() {
+		return impl;
+	}
+	public void addExt(Classe cl) {
+		extend = true;
+		ext = cl;
+	}
+	public void addImpl(Classe cl) {
+		implement = true;
+		impl.add(cl);
+	}
+	public void interF() {
+		interf = true;
+	}
+	public boolean isInterface() {
+		return interf;
+	}
+
+	
 
     public Classe(Class a) {
         this.liens = new LinkedList<>();

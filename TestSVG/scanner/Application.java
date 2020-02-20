@@ -20,40 +20,40 @@ public class Application {
 	 * @param l liste des classes à dessiner
 	 * @param name nom du fichier .svg à générer
 	 */
-	public static void UML(List<Classe> l, String name) {
-		 List<uml.Classe> listC = new ArrayList<>();
-	        for (Classe classe : l) {//traduction des Classe en src.Classe pour générer l'image UML
-	        	List<String> lmeth = new ArrayList<>();
-				for (String s : classe.getMethodes()) {
-					lmeth.add(s);
-				}
-				List<String> latt = new ArrayList<>();
-				for (Argument att : classe.getAttributs()) {
-					latt.add(att.toString());
-				}
-				uml.Classe c0 = new uml.Classe(classe.getNom(), latt, lmeth, classe.getPackage());
-				listC.add(c0);
-			}
-	        for(Classe classe : l) {//génération des liens sur les classe src.Classe
-	        	uml.Classe depart = null;
-	        	for (uml.Classe classe2 : listC) {
-					if(classe2.getName().equals(classe.getNom())) {
-						depart = classe2;
-					}
-				}
-	        	uml.Classe arriver = null;
-	        	for (Lien lien : classe.getLiens()) {
-	        		for (uml.Classe classe2 : listC) {
-						if(classe2.getName().equals(lien.getLier().getNom())) {
-							arriver = classe2;
-						}
-					}
-	        	if(depart != null && arriver != null)
-	        		depart.addLiaison(arriver);
-				}
-	        }
-	     uml.svg.createUML(listC, name);//appel de la fonction pour créé l'UML
-	}
+//	public static void UML(List<Classe> l, String name) {
+//		 List<uml.Classe> listC = new ArrayList<>();
+//	        for (Classe classe : l) {//traduction des Classe en src.Classe pour générer l'image UML
+//	        	List<String> lmeth = new ArrayList<>();
+//				for (String s : classe.getMethodes()) {
+//					lmeth.add(s);
+//				}
+//				List<String> latt = new ArrayList<>();
+//				for (Argument att : classe.getAttributs()) {
+//					latt.add(att.toString());
+//				}
+//				uml.Classe c0 = new uml.Classe(classe.getNom(), latt, lmeth, classe.getPackage());
+//				listC.add(c0);
+//			}
+//	        for(Classe classe : l) {//génération des liens sur les classe src.Classe
+//	        	uml.Classe depart = null;
+//	        	for (uml.Classe classe2 : listC) {
+//					if(classe2.getName().equals(classe.getNom())) {
+//						depart = classe2;
+//					}
+//				}
+//	        	uml.Classe arriver = null;
+//	        	for (Lien lien : classe.getLiens()) {
+//	        		for (uml.Classe classe2 : listC) {
+//						if(classe2.getName().equals(lien.getLier().getNom())) {
+//							arriver = classe2;
+//						}
+//					}
+//	        	if(depart != null && arriver != null)
+//	        		depart.addLiaison(arriver);
+//				}
+//	        }
+//	     uml.svg.createUML(listC, name);//appel de la fonction pour créé l'UML
+//	}
 	
 	public static void fichier(List<Classe> l, String name) {
 		List<Package> pack = new ArrayList<>();
@@ -86,7 +86,12 @@ public class Application {
 			for (Package paqu : pack) {
 				write.write("package \""+paqu.getName()+"\"{\n");
 				for (Classe classe : paqu.getList()) {
-					write.write("class "+classe.getNom()+"{\n");
+					
+					if(classe.isInterface())
+						write.write("interface "+classe.getNom()+"{\n");
+					else
+						write.write("class "+classe.getNom()+"{\n");
+					
 					for (Argument s : classe.getAttributs()) {
 						write.write("{field} "+s.toString()+"\n");
 					}
@@ -100,11 +105,19 @@ public class Application {
 			for (Classe classe : l) {
 				List<Lien> liens = classe.getLiens();
 				for (Lien lien : liens) {
-					if( !tab.get(lien.getLier().getNom()) ) {
-					write.write("\n"+classe.getNom() + "\""+lien.getMultipliciteF()+"\" --- \""+lien.getMultipliciteD() +"\"" + lien.getLier().getNom()+"\n");
+					if( !tab.get( lien.getLier().getNom()) ) {
+					write.write("\n"+classe.getNom() + "\""+lien.getMultipliciteF()+"\" -- \""+lien.getMultipliciteD() +"\"" + lien.getLier().getNom()+"\n");
 					}
 				}
 				tab.replace(classe.getNom(), true);
+				if(classe.isExtend()) {
+					write.write("\n"+classe.getNom()+" --|> "+classe.getExt().getNom()+"\n");
+				}
+				if(classe.isImplement()) {
+					for (Classe ck : classe.getImpl()) {
+						write.write("\n"+classe.getNom()+" ..|> "+ck.getNom()+"\n");
+					}
+				}
 			}
 			write.write("\n@enduml");
 			write.close();
@@ -147,12 +160,19 @@ public class Application {
         Classe groupe = new Classe(gr.getClass());
         Classe etudiant = new Classe(new Etudiant("De Lapatefeuilleté","Hubert","e185475j",gr).getClass());
         Classe iut = new Classe(new IUT(8, 109, 30, 14).getClass());
+        Classe pers = new Classe(new Personne("gilbert","montagné").getClass());
+        Classe matiereI = new Classe(MatiereI.class);
+        matiereI.interF();
         List<Classe> li = new LinkedList<>();
+        etudiant.addExt(pers);
+        matiere.addImpl(matiereI);
         li.add(prof);
         li.add(matiere);
         li.add(groupe);
         li.add(etudiant);
         li.add(iut);
+        li.add(pers);
+        li.add(matiereI);
 //        System.out.println(prof.toString());
 //        System.out.println(matiere.toString());
 //        System.out.println(groupe.toString());
