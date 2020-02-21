@@ -65,14 +65,13 @@ public class Classe {
 			if(mD[i].getParameterCount()>0) {
 				f=mD[i].getParameters();
 				P=new LinkedList();
-				for(int j=0;j<P.size();j++) {
-
+				for(int j=0;j<f.length;j++) {
 					P.add(new Parametre(Lecture.getTerme(f[j].toString())));
 				}
 			}else {
 				P=null;
 			}
-			M.add(new Methode(trg,n,vis));
+			M.add(new Methode(trg,n,P,vis));
 
 		}
 		//attributs classe
@@ -180,7 +179,7 @@ public class Classe {
 			res = res+a.toString()+"\n";
 		}
 		for(String s:getMethodes()){
-			res+=res+s+"\n";
+			res+=s+"\n";
 		}
 		return res;
 	}

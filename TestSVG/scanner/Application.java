@@ -12,6 +12,9 @@ import java.util.Map;
 import srcALire.*;
 import srcALire.Cours.*;
 import srcALire.Groupe.*;
+import srcALire.fichier.Dossier;
+import srcALire.fichier.Element;
+import srcALire.fichier.Fichier;
 
 public class Application {
 
@@ -112,7 +115,7 @@ public class Application {
 			for (Classe classe : l) {//affichage des liens entre classe avec leur multiplicité
 				List<Lien> liens = classe.getLiens();
 				for (Lien lien : liens) {
-					if( !tab.get( lien.getLier().getNom()) ) {//vérifie si le lien n'a pas déjà été fait dans un sens
+					if( !tab.get(lien.getLier().getNom())) {//vérifie si le lien n'a pas déjà été fait dans un sens
 						write.write("\n"+classe.getNom() + "\""+lien.getMultipliciteF()+"\" -- \""+lien.getMultipliciteD() +"\"" + lien.getLier().getNom()+"\n");
 					}
 				}
@@ -126,6 +129,11 @@ public class Application {
 					}
 				}
 			}
+			write.write("class explicationVisibilité {\n"+
+						"- private\n"+
+						"+ public\n"+
+						"# protected\n"+
+						"~ package\n } ");
 			write.write("\n@enduml");//ferme le plantuml
 			write.close();//ferme le Writer du fichiers
 		} catch (IOException e) {
@@ -202,7 +210,10 @@ public class Application {
 		Class de = MatiereI.class;
 		Class s = Personne.class;
 		Class iut = IUT.class;
-
+		Class fi = Fichier.class;
+		Class dos = Dossier.class;
+		Class elem = Element.class;
+		
 		List<Class> cla = new LinkedList<>();
 		Class gro= gr.getClass();
 
@@ -213,10 +224,16 @@ public class Application {
 		cla.add(gro);
 		cla.add(s);
 		cla.add(iut);
+		cla.add(fi);
+		cla.add(dos);
+		cla.add(elem);
 
 		List<Classe> li = new LinkedList<>();
 		for (int i=0;i<cla.size();i++){
 			li.add(new Classe(cla.get(i)));
+		}
+		for (Classe classe : li) {
+			classe.trouverLien(li);
 		}
 		li = chercherExtend(li,cla);
 		

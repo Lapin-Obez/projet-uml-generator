@@ -1,7 +1,8 @@
 package scanner;
+import java.util.List;
 
 /**
- *
+ * 
  */
 
 /**
@@ -9,71 +10,111 @@ package scanner;
  *
  */
 public class Methode {
-    private String typeRetour;
-    private String name;
-    private Parametre[] parametres;
-    private String visibilite;
-    private String[] exceptions;
-
-    public Methode(String typeRetour, String name, Parametre[] parametres, String visibilite) {
-        super();
-        this.typeRetour = typeRetour;
-        this.name = name;
-        this.parametres = parametres;
-        this.visibilite = visibilite;
-    }
-
-    public Methode(String trg, String n, String vis) {
+	private String typeRetour;
+	private String name;
+	private List<Parametre> parametres;
+	private String visibilite;
+	private String[] exceptions;
+	
+	public Methode(String typeRetour, String name, List<Parametre> parametres, String visibilite, String[] e) {
 		super();
-		typeRetour = trg;
-		name = n;
-		parametres = null;
-		this.visibilite = vis;
-		this.exceptions = null;
+		this.typeRetour = typeRetour;
+		this.name = name;
+		this.parametres = parametres;
+		this.visibilite = visibilite;
+		this.exceptions=e;
+	}
+	
+	public Methode(String typeRetour, String name, List<Parametre> parametres, String visibilite) {
+		super();
+		this.typeRetour = typeRetour;
+		this.name = name;
+		this.parametres = parametres;
+		this.visibilite = visibilite;
+		this.exceptions=null;
+	}
+	
+	public Methode(String typeRetour, String name,  String visibilite) {
+		super();
+		this.typeRetour = typeRetour;
+		this.name = name;
+		this.parametres = null;
+		this.visibilite = visibilite;
+		this.exceptions=null;
+	}
+	public Methode(String typeRetour, String name,  String visibilite, String[] e) {
+		super();
+		this.typeRetour = typeRetour;
+		this.name = name;
+		this.parametres = null;
+		this.visibilite = visibilite;
+		this.exceptions=e;
 	}
 
 	public String getTypeRetour() {
-        return typeRetour;
-    }
+		return typeRetour;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getParametres() {
-        if(parametres==null) {
-            return "";
-        }else {
-            String res=parametres[0].toString();
-            for(int i=1;i<parametres.length;i++) {
-                res+=", "+parametres[i].toString();
-            }
-            return res;
-        }
-    }
-    public Parametre[] getParam(){
-        return parametres;
-    }
+	public String getParametres() {
+		if(parametres.size()==0) {
+			return "";
+		}else {
+			String res=parametres.get(0).toString();
+			for(int i=1;i<parametres.size();i++) {
+				res+=", "+parametres.get(i).toString();
+			}
+			return res;
+		}
+	}
 
-    public String getVisibilite() {
-        return visibilite;
-    }
+	public String getVisibilite() {
+		return visibilite;
+	}
+	
+	@Override
+	public String toString() {
+		String res="";
+		if(parametres==null) {
+			if(visibilite.equals("public")) {
+				res= "+ "+ name+" ( )";
+			}else if(visibilite.equals("private")) {
+				res= "- "+ name+" ( )";
+			}else if(visibilite.equals("protected")) {
+				res= "# "+ name+" ( )";
+			}else if(visibilite.equals("abstract")) {
+				res= "<<abstract>> "+ name+" ( )";
+			}else {
+				res= " "+ name+" ( )";
+			}
+		}else {
+			if(visibilite.contains("abstract")) {
+				res= "<<abstract>> ";
+			}
+			if(visibilite.equals("public")) {
+				res+= "+ "+ name+" ("+getParametres()+")";
+			}else if(visibilite.equals("private")) {
+				res+= "- "+ name+" ("+getParametres()+")";
+			}else if(visibilite.equals("protected")) {
+				res+= "# "+ name+" ("+getParametres()+")";
+			}else {
+				res+= " "+ name+" ("+getParametres()+")";
+			}
+			
+		}
+		if(!typeRetour.equals("")) {
+			
+			res += " : "+typeRetour;
+		}
+		return res;
+		
+			
+	}
 
-    @Override
-    public String toString() {
-        if(visibilite.equals("public")) {
-            return "+ "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
-        }else if(visibilite.equals("private")) {
-            return "- "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
-        }else if(visibilite.equals("protected")) {
-            return "# "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
-        }else if(visibilite.equals("abstract")) {
-            return "<<abstract>> "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
-        }else {
-            return " "+ name.trim()+"("+getParametres().trim()+")"+" : "+typeRetour;
-        }
 
-    }
-
-
+	
+	
 }

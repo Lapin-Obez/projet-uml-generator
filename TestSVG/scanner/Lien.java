@@ -34,11 +34,11 @@ public class Lien {
            }
            if(li.get(i).equals(actuelle.getNom().trim()+"[]")||li.get(i).equals("List<"+actuelle.getNom().trim()+">")){
                multipliciteD = "*";
+               lier = actuelle;
                return;
            }
 
        }
-
        lier = actuelle;
    }
 
