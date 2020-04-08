@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import srcALire.*;
 import srcALire.Cours.*;
@@ -237,7 +238,11 @@ public class Application {
 		}
 		li = chercherExtend(li,cla);
 		
-		Application.fichier(li, "Bonjour");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Veuillez saisir le nom du fichier ");//lecture pour determiner
+		String str = sc.nextLine();
+		sc.close();
+		Application.fichier(li, str);//appelle de la méthode qui génère un fichier qui contient le plantuml des classes données en paramètre
 		//Application.UML(li, "test-fusion-1");
 	}
 
