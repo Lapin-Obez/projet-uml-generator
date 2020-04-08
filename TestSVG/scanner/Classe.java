@@ -33,7 +33,9 @@ public class Classe {
 		attributs=a;
 	}
 
-
+	/**
+	 * Constructeur qui permet à partir d'une class java de récupérer le package, le nom de la classe, le attributs, les méthodes, les classes qu'elle implemente, etc et aussis'il s'agit d'une interfece, d'une classe abstraite.
+	 * **/
 	public Classe(Class cD) {
 
 		Modifier mo=new Modifier();
@@ -113,34 +115,41 @@ public class Classe {
 		imp = new LinkedList<>();
 		liens = new LinkedList<>();
 	}
+	//renvoie la liste des classes implémentées
 	public List<Classe> getImpl(){
 		return imp;
 	}
+	//renvoie true si la classe est une interface, false si non
 	public boolean isInterface(){
 		return Interface;
 	}
+	//renvoie true si la classe est une classe abstraite, false si non
 	public boolean isAbstrait(){
 		return abstrait;
 	}
+	//renvoie la classe qu'elle extend
 	public Classe getExt(){
 		return ext;
 	}
+	//permet de stocké la classe étendu
 	public void setExt(Classe e){
 		ext=e;
 		setExtend();
 	}
+	//permet d'ajouter une classe implementée à la liste des classe implémentées.
 	public void addImp(Classe e){
 		this.imp.add(e);
 		setImplement();
 	}
+	//renvoie le nom de la classe
 	public String getNom() {
 		return nom;
 	}
-
+	//set implements à true
 	public void setImplement(){
 		implement = true;
 	}
-
+	//renvoie la liste des méthodes
 	public List<String> getMethodes() {
 		List<String> li = new LinkedList<>();
 		for(int i =0;i<methodes.size();i++){
@@ -148,6 +157,7 @@ public class Classe {
 		}
 		return li;
 	}
+	//remplie la liste lien avec toute les classes auxquelles la classe actuelle est liée
 	public void trouverLien(List<Classe> cl){
 		for(int i =0;i<cl.size();i++){
 			Lien li = new Lien(this);
@@ -156,19 +166,23 @@ public class Classe {
 			}
 		}
 	}
+	//renvoie la liste des classes liées à la classe actuelle
 	public List<Lien> getLiens(){
 		return this.liens;
 	}
+	//set extend à true
 	public void setExtend(){
 		extend = true;
 	}
+	//renvoie la valeur de extend
 	public boolean isExtend() {
 		return extend;
 	}
-
-	public boolean isImplement(){
+	//renvoie la valeur de implement
+	public boolean isImplement() {
 		return implement;
 	}
+	//renvoie la liste des attibuts
 	public List<Argument> getAttributs(){
 		return attributs;
 	}
@@ -184,7 +198,7 @@ public class Classe {
 		return res;
 	}
 
-
+	//renvoie le nom du package
 	public String getPackage() {
 		return pack;
 	}

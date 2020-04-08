@@ -7,7 +7,7 @@ public class Package {
 	
 	private List<Classe> list;//liste des classes
 	private String nom;//nom du package
-	//Classe qui représente un package sera utilisé lors du passage au format plantuml
+	//Classe qui reprÃ©sente un package sera utilisÃ© lors du passage au format plantuml
 	/**
 	 * Constructeur de Package
 	 * @param name le nom que portera le package
@@ -18,7 +18,7 @@ public class Package {
 	}
 
 	/**
-	 * Méthode pour obtenir la list de classe du package
+	 * MÃ©thode pour obtenir la list de classe du package
 	 * @return une liste des classes
 	 */
 	public List<Classe> getList() {
@@ -26,14 +26,14 @@ public class Package {
 	}
 
 	/**
-	 * définit la liste de classe du package
+	 * dÃ©finit la liste de classe du package
 	 * @param list la nouvelle liste de classe du package
 	 */
 	public void setList(List<Classe> list) {
 		this.list = list;
 	}
 	/**
-	 * Méthode pour obtenir le nom du package
+	 * MÃ©thode pour obtenir le nom du package
 	 * @return
 	 */
 	public String getName() {
@@ -41,7 +41,7 @@ public class Package {
 	}
 
 	/**
-	 * Méthode pour changer le nom du package
+	 * MÃ©thode pour changer le nom du package
 	 * @param nom
 	 */
 	public void setNom(String nom) {
@@ -49,7 +49,7 @@ public class Package {
 	}
 	
 	/**
-	 * Méthode pour ajouter une classe à la liste de classe du package
+	 * MÃ©thode pour ajouter une classe ï¿½ la liste de classe du package
 	 * @param cl
 	 */
 	public void addClasse( Classe cl) {
@@ -57,7 +57,7 @@ public class Package {
 	}
 
 	/**
-	 * Méthode qui décrit le package
+	 * MÃ©thode qui dÃ©crit le package
 	 */
 	@Override
 	public String toString() {

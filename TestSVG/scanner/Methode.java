@@ -15,7 +15,7 @@ public class Methode {
 	private List<Parametre> parametres;
 	private String visibilite;
 	private String[] exceptions;
-	
+	//une série de constructeur qui permet de crée une méthode en fonction des éléments que nous possédons sur cette dernière
 	public Methode(String typeRetour, String name, List<Parametre> parametres, String visibilite, String[] e) {
 		super();
 		this.typeRetour = typeRetour;
@@ -50,15 +50,15 @@ public class Methode {
 		this.visibilite = visibilite;
 		this.exceptions=e;
 	}
-
+	//renvoie le type retour de la méthode
 	public String getTypeRetour() {
 		return typeRetour;
 	}
-
+	//renvoie le type nom de la méthode
 	public String getName() {
 		return name;
 	}
-
+	//renvoie les paramètres de la méthode
 	public String getParametres() {
 		if(parametres.size()==0) {
 			return "";
@@ -70,7 +70,7 @@ public class Methode {
 			return res;
 		}
 	}
-
+	////renvoie la visibilité de la méthode
 	public String getVisibilite() {
 		return visibilite;
 	}

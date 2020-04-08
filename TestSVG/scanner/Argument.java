@@ -6,9 +6,11 @@ package scanner;
 
 /**
  * @author UTILISATEUR
+ * Cette classe gère un attribut d'une classe
  *
  */
 public class Argument extends Parametre{
+
     private String nom;
     private String visibilite;
 
@@ -18,11 +20,11 @@ public class Argument extends Parametre{
         this.nom=nom;
 
     }
-
+    //renvoie le nom de l'argument
     public String getNom() {
         return nom;
     }
-
+    //renvoie la visibilité de l'attribut
     public String getVisibilite() {
         return visibilite;
     }

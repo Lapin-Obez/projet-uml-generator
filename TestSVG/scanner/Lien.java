@@ -68,7 +68,7 @@ public class Lien {
        return this.lier;
    }
 
-
+   //méthodes qui renvoie vrai si la classe passée en paramètre n'apparait pas dans la classe se trouvant dans l'attribut classe.
    public boolean presenceLien(Classe actuelle){
            calculerMultipliciteD(actuelle);
            calculerMultipliciteF(actuelle);
