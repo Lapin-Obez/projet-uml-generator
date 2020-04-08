@@ -18,7 +18,7 @@ import srcALire.fichier.Fichier;
 
 public class Application {
 
-	/**
+	/**Anciennce fonction
 	 * Fonction qui dessine un diagramme UML sur une image svg via les donnée passé dans la liste de classe
 	 * @param l liste des classes à dessiner
 	 * @param name nom du fichier .svg à générer
