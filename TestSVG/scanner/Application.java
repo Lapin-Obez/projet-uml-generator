@@ -209,7 +209,7 @@ public class Application {
 		System.out.println("Veuillez rentrer le chemin du dossier où sont ranger les fichers java à transformer en UML \n");
 		String chaine= scanner.nextLine();
 		scanner.close();
-		List chemins= scanDoss(chaine);
+		List<String> chemins= scanDoss(chaine);
 		List<Classe> lClass=new LinkedList<Classe>();
 		for(int i=0;i<chemins.size();i++) {
 			lClass.add(Application.scan(chemins.get(i).toString()));
@@ -295,14 +295,13 @@ public class Application {
 		try {
 			sc = new Scanner(new File(chemin));
 			String s;
-			String[] S;
 			String imple=" ",thro= " ",extend = "";
-			List<String> impleList=new LinkedList();
-			List<String> throList=new LinkedList();
+			List<String> impleList=new LinkedList<>();
+			List<String> throList=new LinkedList<>();
 			String[] thT,implT;
 			String nomC="";
-			List<String> methodes= new LinkedList();
-			List<String> attributs= new LinkedList();
+			List<String> methodes= new LinkedList<>();
+			List<String> attributs= new LinkedList<>();
 			boolean implement=false,abstrait=false,etend=false, Interface=false;
 			String pack=" ";
 			
@@ -482,7 +481,7 @@ public class Application {
 				
 			
 			/*Organisations des attributs*/
-			List<Argument> att=new LinkedList();
+			List<Argument> att=new LinkedList<>();
 			String[] tmp;
 			for(int i=0;i<attributs.size();i++) {
 				tmp=attributs.get(i).split(" ");
@@ -495,8 +494,8 @@ public class Application {
 				
 			}
 			/*Tri des méthodes*/
-			List<Methode> meth=new LinkedList();
-			List<Parametre> param=new LinkedList();
+			List<Methode> meth = new LinkedList<>();
+			List<Parametre> param = new LinkedList<>();
 			String tmpA;
 			String tmpB;
 			String tmp2;
@@ -638,7 +637,7 @@ public class Application {
 				param.clear();
 			}
 			
-			
+			sc.close();
 			Classe cl=new Classe(nomC,meth,att,etend,implement,pack,Interface,abstrait);
 			return cl;
 		}
