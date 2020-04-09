@@ -32,6 +32,22 @@ public class Classe {
 		methodes=m;
 		attributs=a;
 	}
+	/*Constructeur utilis� par le scanner*/
+	public Classe(String nomC, List<Methode> meth, List<Argument> att, boolean etend, boolean implement2, String pack2,
+			boolean interface2, boolean abstrait2) {
+		super();
+		this.nom = nom;
+		this.methodes = methodes;
+		this.attributs = attributs;
+		this.liens = new LinkedList<Lien>();
+		this.extend = extend;
+		this.implement = implement;
+		this.ext = null;
+		this.imp = new LinkedList<Classe>();
+		this.pack = pack;
+		Interface = interface2;
+		this.abstrait = abstrait;
+	}
 
 	/**
 	 * Constructeur qui permet à partir d'une class java de récupérer le package, le nom de la classe, le attributs, les méthodes, les classes qu'elle implemente, etc et aussis'il s'agit d'une interfece, d'une classe abstraite.

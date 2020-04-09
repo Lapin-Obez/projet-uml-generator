@@ -10,6 +10,13 @@ package scanner;
  */
 public class Parametre {
     private String type;
+    private String nom;
+
+    public Parametre(String type, String n) {
+    	super();
+    	this.type = type;
+    	nom=n;
+    }
 
     public Parametre(String type) {
         super();
