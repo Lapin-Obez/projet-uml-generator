@@ -2,17 +2,17 @@ package test;
 import org.junit.jupiter.api.Test;
 import scanner.Classe;
 import scanner.Lien;
-import srcALire.Cours.Enseignant;
+/*import srcALire.Cours.Enseignant;
 import srcALire.Cours.Matiere;
 import srcALire.Groupe.Etudiant;
-import srcALire.Groupe.groupe;
+import srcALire.Groupe.groupe;*/
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class testLien {
-    groupe gr = new groupe(1,20);
+/*    groupe gr = new groupe(1,20);
     Classe prof = new Classe(new Enseignant("Jean-François Remm").getClass());
     Classe matiere = new Classe(new Matiere("Programmation objet 2",18).getClass());
     Classe groupe = new Classe(gr.getClass());
@@ -43,5 +43,5 @@ public class testLien {
     }
 
 
-
+*/
 }

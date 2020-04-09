@@ -12,13 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import srcALire.*;
-import srcALire.Cours.*;
-import srcALire.Groupe.*;
-import srcALire.fichier.Dossier;
-import srcALire.fichier.Element;
-import srcALire.fichier.Fichier;
-
 public class Application {
 
 	/**Anciennce fonction
@@ -212,7 +205,11 @@ public class Application {
 		}catch(Exception e){
 
 		}
-		chemins = scanDoss(c+"\\srcALire");
+		System.out.println("Saisissez le nom de votre projet :");
+		Scanner scan = new Scanner(System.in);
+		String str = scan .nextLine();
+		scan.close();
+		chemins = scanDoss(c+"\\"+str);
 		List<Class> cla = new LinkedList<>();
 		//va créer une instance de toute les classes envoyées
 		for (String s:chemins) {
