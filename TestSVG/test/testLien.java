@@ -34,7 +34,7 @@ public class testLien {
         assertEquals("0",li.getMultipliciteF());
     }
     @Test
-    public void testMultiplicité(){
+    public void testMultiplicitÃ©(){
         Lien li = new Lien(matiere);
         li.presenceLien(groupe);
         assertEquals("0",li.getMultipliciteD());
