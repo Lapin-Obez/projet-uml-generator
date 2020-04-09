@@ -32,7 +32,7 @@ public class Classe {
 		methodes=m;
 		attributs=a;
 	}
-	/*Constructeur utilisé par le scanner*/
+	/*Constructeur utilisï¿½ par le scanner*/
 	public Classe(String nomC, List<Methode> meth, List<Argument> att, boolean etend, boolean implement2, String pack2,
 			boolean interface2, boolean abstrait2) {
 		super();
@@ -108,7 +108,7 @@ public class Classe {
 			if(type.contains("<")) {
 				type=type.substring(0, type.indexOf("<"))+" < "+type.substring(type.indexOf("<")+1,type.indexOf(">"))+" >";
 			}
-			type=Lecture.getTerme(type);
+			type=Lecture.getTermeC(type);
 			tt=type.split(" ");
 			type="";
 			for(int j=0;j<tt.length;j++) {

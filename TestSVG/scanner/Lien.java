@@ -1,5 +1,6 @@
 package scanner;
 
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,10 +26,11 @@ public class Lien {
        List<Argument> argdeb=this.classe.getAttributs();
        for (Argument a:argdeb) {
            li.add(a.getType());
+
        }
        int cmp=0;
        for(int i =0; i<li.size();i++){
-           if(li.get(i).equals(actuelle.getNom())||li.get(i).equals(actuelle.getNom()+"  ")){
+           if(li.get(i).equals(actuelle.getNom())||li.get(i).equals(actuelle.getNom()+" ")){
                cmp++;
                multipliciteD =""+cmp;
            }

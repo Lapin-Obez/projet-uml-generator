@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import srcALire.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -119,7 +118,7 @@ public class Lecture {
 	public static String getTermeC(String texte) {
 	    List<String> li=new LinkedList<>();
 
-	    Pattern pattern = Pattern.compile("([A-z]*) |([.])");
+	    Pattern pattern = Pattern.compile("([A-z0-9]*) |([.])");
 	    Matcher matcher = pattern.matcher(texte+" ");
 	    String s,s2="";
 	    while(matcher.find()) {

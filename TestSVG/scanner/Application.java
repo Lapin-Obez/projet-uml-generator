@@ -205,25 +205,36 @@ public class Application {
 		}catch(Exception e){
 
 		}
-		System.out.println("Saisissez le nom de votre projet :");
-		Scanner scan = new Scanner(System.in);
-		String str = scan .nextLine();
-		scan.close();
-		chemins = scanDoss(c+"\\"+str);
+		System.out.println("Saisissez le nom de vos dossiers ou quitter pour lancer la génération");
+		String str ="";
 		List<Class> cla = new LinkedList<>();
-		//va créer une instance de toute les classes envoyées
-		for (String s:chemins) {
-			try{
-				s= s.replace(".java","");
-				s = s.replace(c+"\\","");
-				s = s.replace("\\",".");
-				System.out.println(s);
-				Class test = Class.forName(s);
-				cla.add(test);
-			}catch(Exception e){
-				System.out.println(e.getMessage());
+		Scanner scan = new Scanner(System.in);
+		str = scan.nextLine();
+		while(!str.equals("quitter")){
+
+
+
+			chemins = scanDoss(c+"\\"+str);
+
+			//va créer une instance de toute les classes envoyées
+			List<Class> liste = new LinkedList<>();
+			for (String s:chemins) {
+
+				try{
+					s= s.replace(".java","");
+					s = s.replace(c+"\\","");
+					s = s.replace("\\",".");
+					System.out.println(s);
+					Class test = Class.forName(s);
+					liste.add(test);
+				}catch(Exception e){
+					System.out.println(e.getMessage());
+				}
 			}
+			cla.addAll(liste);
+			str = scan.nextLine();
 		}
+		scan.close();
 
 		List<Classe> li = new LinkedList<>();
 		for (int i=0;i<cla.size();i++){
