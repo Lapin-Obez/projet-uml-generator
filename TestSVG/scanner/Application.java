@@ -202,7 +202,7 @@ public class Application {
 	}
 
 	public static void main(String[] args) {
-
+	//test pour l'affichage
 		System.out.println("-----------------Test avec de vraies classes---------------------");
 		groupe gr = new groupe(1,20);
 		Class pr = new Enseignant("Jean-FranÃ§ois Remm").getClass();
@@ -242,7 +242,7 @@ public class Application {
 		System.out.println("Veuillez saisir le nom du fichier ");//lecture pour determiner
 		String str = sc.nextLine();
 		sc.close();
-		Application.fichier(li, str);//appelle de la méthode qui génère un fichier qui contient le plantuml des classes données en paramètre
+		Application.fichier(li, str);//appelle de la mï¿½thode qui gï¿½nï¿½re un fichier qui contient le plantuml des classes donnï¿½es en paramï¿½tre
 		//Application.UML(li, "test-fusion-1");
 	}
 
